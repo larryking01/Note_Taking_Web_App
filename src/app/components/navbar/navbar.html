@@ -1,0 +1,8 @@
+<main>
+    <nav>
+        <button>Notiiii</button>
+        <h3 *ngIf="currentUserEmail">{{ currentUserEmail }}</h3>
+        <button *ngIf="isLoggedIn" (click)="signOutUser()">Sign Out</button>
+        <button *ngIf="!isLoggedIn"(click)="navigateToLogin()">Sign In</button>
+    </nav>
+</main>
