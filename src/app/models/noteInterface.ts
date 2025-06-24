@@ -11,7 +11,7 @@ export interface NoteInterface {
     user: string,
     title: string,
     content: string,
-    tags: string,
+    tag: noteTag,
     isArchived: boolean,
     createdAt: string
     
