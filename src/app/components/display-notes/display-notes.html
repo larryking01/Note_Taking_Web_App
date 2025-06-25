@@ -2,16 +2,19 @@
     <app-sidebar />
 
     <section class="main">
-        <app-navbar />
+        <app-navbar [pageTitle]="'Notes list'" />
 
         <div class="notes-content">
-            <!-- <button (click)="navigateToCreateNote()">New Note</button> -->
+            <input type="text" placeholder="Search notes by title, tag or content.." 
+                   [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" class="search-input"/>
+
+
                 <article *ngIf="allNotes$ | async as notes; else loading">
                     <div *ngIf="notes.length > 0; else noNotes" class="notes-grid">
-                        <div *ngFor="let note of notes" class="note-card">
+                        <div *ngFor="let note of filteredNotes" class="note-card">
                             <h3>{{ note.title }}</h3>
                             <p>{{ note.content }}</p>
-                            <button (click)="navigateToEditNote(note)">Edit</button>
+                            <button (click)="navigateToEditNote(note)" class="edit-note-btn">Edit</button>
                         </div>
                     </div>
                 </article>

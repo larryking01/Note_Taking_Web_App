@@ -1,5 +1,7 @@
 <section class="sign-up-container">
-    <form [formGroup]="signInForm" (ngSubmit)="signInUser()">
+    <h3 class="auth-type-header">Sign in</h3>
+
+    <form [formGroup]="signInForm" (ngSubmit)="signInUser()" class="authentication-form">
         
         <label for="email-input">E-mail</label>
         <div>
@@ -23,7 +25,7 @@
             Sign in
         </button>
 
-        <div>
+        <div class="account-recovery">
             <p (click)="navigateToSignUp()">Don't have an account? Register here</p>
             <p>Forgot password? Reset here</p>
         </div>

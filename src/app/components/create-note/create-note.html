@@ -2,10 +2,10 @@
     <app-sidebar />
 
     <div class="main">
-        <app-navbar />
+        <app-navbar [pageTitle]="'New note'" />
 
         <section class="notes-content">
-            <form (ngSubmit)="createNewNote()" [formGroup]="noteForm">
+            <form (ngSubmit)="createNewNote()" [formGroup]="noteForm" class="note-form">
                 <label for="note-title">Note Title</label>
                 <div>
                     <div *ngIf="noteForm.get('noteTitle')?.invalid && noteForm.get('noteTitle')?.touched">
@@ -25,6 +25,8 @@
                 <div *ngIf="noteForm.get('noteTag')?.invalid && noteForm.get('noteTag')?.touched">
                     <small *ngIf="noteForm.get('noteTag')?.errors?.['required']">Note tag is required</small>
                 </div>
+
+                <label for="note-tag">Select Tag</label>
                 <select class="note-tag" formControlName="noteTag">
                     <option value="" disabled selected>Select tag</option>
                     <option value="personal">Personal</option>
@@ -34,7 +36,7 @@
 
                 <article class="form-actions-article">
                     <button type="submit" class="create-note-btn">Create note</button>
-                    <button type="submit" class="cancel-btn">Cancel</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
                 </article>
             </form>
         </section>

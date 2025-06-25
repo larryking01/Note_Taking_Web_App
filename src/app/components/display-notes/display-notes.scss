@@ -1,3 +1,6 @@
+@use '../../styles/_reusables' as *;
+
+
 .layout {
   display: flex;
   min-height: 100vh;
@@ -52,7 +55,26 @@
       }
     }
   }
+
+  .edit-note-btn {
+    @include main-action-btn-style(5rem, $primary-col, $affirm-btn-hover-col);
+    margin-top: 2rem
+  }
+
+  .search-input {
+    width: 100%;
+    // max-width: 400px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;  
+  
+  }
+
 }
+
+
 
 /* Responsive */
 @media (max-width: 768px) {

@@ -1,16 +1,5 @@
-<!-- <main>
-    <nav>
-        <button (click)="navigateToHome()">Notiiii</button>
-        <h3 *ngIf="currentUserEmail">{{ currentUserEmail }}</h3>
-        <button *ngIf="isLoggedIn" (click)="signOutUser()">Sign Out</button>
-        <button *ngIf="!isLoggedIn"(click)="navigateToLogin()">Sign In</button>
-    </nav>
-</main> -->
-
-
-
 <header class="navbar">
-    <span class="page-title" (click)="navigateToHome()">All Notes</span>
+    <span class="page-title" (click)="navigateToHome()">{{ pageTitle }}</span>
     <div class="user-info">
         <span *ngIf="currentUserEmail">{{ currentUserEmail }}</span>
         <button *ngIf="isLoggedIn" (click)="signOutUser()">Sign Out</button>
