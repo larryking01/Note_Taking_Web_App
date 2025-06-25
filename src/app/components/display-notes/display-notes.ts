@@ -4,6 +4,7 @@ import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { Observable } from 'rxjs';
 import { NoteInterface } from '../../models/noteInterface';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,6 +16,8 @@ import { CommonModule } from '@angular/common';
 export class DisplayNotes implements OnInit {
 
   notesService = inject( NoteCrudService )
+
+  router = inject( Router )
 
   allNotes$: Observable<NoteInterface[]> = this.notesService.getUserNotesRealTime()
 
@@ -28,6 +31,18 @@ export class DisplayNotes implements OnInit {
         console.log("all notes fetched = ", this.AllNotesArray)
        })
     })
+  }
+
+
+  navigateToCreateNote() {
+    this.router.navigate(['create'])
+  }
+
+  navigateToEditNote(note: NoteInterface) {
+    // this.router.navigate(['edit-note'])
+    console.log("selected note = ", note)
+    this.router.navigate(['edit-note', note.id ])
+
   }
 
 

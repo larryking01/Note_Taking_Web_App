@@ -4,9 +4,12 @@
     <section class="container">
         <article *ngIf="allNotes$ | async as notes; else loading">
             <div *ngIf="notes.length > 0; else noNotes">
+                <button (click)="navigateToCreateNote()">New Note</button>
                 <div *ngFor="let note of notes" class="note-card">
                     <h3>{{ note.title }}</h3>
                     <p>{{ note.content }}</p>
+
+                    <button (click)="navigateToEditNote(note)">Edit</button>
                 </div>
             </div>
         </article>

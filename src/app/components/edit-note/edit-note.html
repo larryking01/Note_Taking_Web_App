@@ -1,1 +1,60 @@
-<p>edit-note works!</p>
+<main>
+    <app-navbar></app-navbar>
+
+    <!-- <section class="edit-note-container">
+        <div *ngIf="userNote$ | async as note; else loading">
+            <ng-container *ngIf="note; else notFound" class="note-detail-card">
+                <h2>{{ note.title }}</h2>
+                <p>{{ note.content }}</p>
+                <p>Tag: {{ note.tag }}</p>
+                <p>Date Created: {{ note.createdAt }}</p>
+            </ng-container>
+        </div>
+
+        <ng-template #loading>
+            <p>Loading note...</p>
+        </ng-template>
+
+        <ng-template #notFound>
+            <p>Note not found or has been deleted.</p>
+        </ng-template>
+    </section> -->
+
+    <section class="note-form-container">
+        <form (ngSubmit)="updateNote()" [formGroup]="noteForm">
+            <label for="note-title">Note Title</label>
+            <div>
+                <div *ngIf="noteForm.get('noteTitle')?.invalid && noteForm.get('noteTitle')?.touched">
+                    <small *ngIf="noteForm.get('noteTitle')?.errors?.['required']">Note title is required</small>
+                </div>
+                <input type="text" class="note-title" id="note-title" formControlName="noteTitle">
+            </div>
+
+            <label for="note-content">Note Content</label>
+            <div>
+                <div *ngIf="noteForm.get('noteContent')?.invalid && noteForm.get('noteContent')?.touched">
+                    <small *ngIf="noteForm.get('noteContent')?.errors?.['required']">Note content is required</small>
+                </div>
+                <textarea rows="10" class="note-content" id="note-content" formControlName="noteContent"></textarea>
+            </div>
+
+            <div *ngIf="noteForm.get('noteTag')?.invalid && noteForm.get('noteTag')?.touched">
+                <small *ngIf="noteForm.get('noteTag')?.errors?.['required']">Note tag is required</small>
+            </div>
+            <select class="note-tag" formControlName="noteTag">
+                <option value="" disabled selected>Select tag</option>
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="career">Career</option>
+            </select>
+
+            <article class="form-actions-article">
+                <button type="submit" [disabled]="noteForm.invalid" class="create-note-btn">Update note</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+                <button type="button" class="delete-btn" (click)="deleteNote()">Delete note</button>
+                <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button>
+            </article>
+        </form>
+    </section>
+
+</main>
