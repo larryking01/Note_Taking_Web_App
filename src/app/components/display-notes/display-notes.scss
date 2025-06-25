@@ -1,3 +1,6 @@
+@use '../../styles/_reusables' as *;
+
+
 .layout {
   display: flex;
   min-height: 100vh;
@@ -51,6 +54,11 @@
         font-size: 0.75rem;
       }
     }
+  }
+
+  .edit-note-btn {
+    @include main-action-btn-style(5rem, $primary-col, $affirm-btn-hover-col);
+    margin-top: 2rem
   }
 
   .search-input {

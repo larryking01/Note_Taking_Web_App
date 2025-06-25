@@ -14,7 +14,7 @@
                         <div *ngFor="let note of filteredNotes" class="note-card">
                             <h3>{{ note.title }}</h3>
                             <p>{{ note.content }}</p>
-                            <button (click)="navigateToEditNote(note)">Edit</button>
+                            <button (click)="navigateToEditNote(note)" class="edit-note-btn">Edit</button>
                         </div>
                     </div>
                 </article>
