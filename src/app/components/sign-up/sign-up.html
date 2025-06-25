@@ -1,1 +1,31 @@
-<p>sign-up works!</p>
+<section class="sign-up-container">
+    <form [formGroup]="signUpForm" (ngSubmit)="createNewUser()">
+        
+        <label for="email-input">E-mail</label>
+        <div>
+            <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
+                <small *ngIf="signUpForm.get('email')?.errors?.['required']">E-mail is required</small>
+                <small *ngIf="signUpForm.get('email')?.errors?.['email']">Invalid email format</small>
+            </div>
+            <input type="email" id="email-input" class="email-input" formControlName="email">
+        </div>
+
+        <label for="password-input">Password</label>
+        <div>
+            <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+                <small *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required</small>
+                <small *ngIf="signUpForm.get('password')?.errors?.['password']">Invalid email format</small>
+            </div>
+            <input type="password" id="password-input" class="password-input" formControlName="password">
+        </div>
+
+        <button type="submit" class="add-new-user-btn">
+            Register
+        </button>
+
+        <div>
+            <p (click)="navigateToSignIn()">Already have an account? Register here</p>
+        </div>
+    </form>
+</section>
+

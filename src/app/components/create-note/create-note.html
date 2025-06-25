@@ -1,1 +1,43 @@
-<p>create-note works!</p>
+<article class="layout">
+    <app-sidebar />
+
+    <div class="main">
+        <app-navbar />
+
+        <section class="notes-content">
+            <form (ngSubmit)="createNewNote()" [formGroup]="noteForm">
+                <label for="note-title">Note Title</label>
+                <div>
+                    <div *ngIf="noteForm.get('noteTitle')?.invalid && noteForm.get('noteTitle')?.touched">
+                        <small *ngIf="noteForm.get('noteTitle')?.errors?.['required']">Note title is required</small>
+                    </div>
+                    <input type="text" class="note-title" id="note-title" formControlName="noteTitle">
+                </div>
+
+                <label for="note-content">Note Content</label>
+                <div>
+                    <div *ngIf="noteForm.get('noteContent')?.invalid && noteForm.get('noteContent')?.touched">
+                        <small *ngIf="noteForm.get('noteContent')?.errors?.['required']">Note content is required</small>
+                    </div>
+                    <textarea rows="10" class="note-content" id="note-content" formControlName="noteContent"></textarea>
+                </div>
+
+                <div *ngIf="noteForm.get('noteTag')?.invalid && noteForm.get('noteTag')?.touched">
+                    <small *ngIf="noteForm.get('noteTag')?.errors?.['required']">Note tag is required</small>
+                </div>
+                <select class="note-tag" formControlName="noteTag">
+                    <option value="" disabled selected>Select tag</option>
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="career">Career</option>
+                </select>
+
+                <article class="form-actions-article">
+                    <button type="submit" class="create-note-btn">Create note</button>
+                    <button type="submit" class="cancel-btn">Cancel</button>
+                </article>
+            </form>
+        </section>
+    </div>
+
+</article>

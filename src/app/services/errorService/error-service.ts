@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal, signal } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,26 @@ import { Injectable } from '@angular/core';
 export class ErrorService {
 
   constructor() { }
+
+  errorMessage = signal<string | null>( null )
+
+
+  handleError(error: string, duration = 3000) {
+    this.errorMessage.set( error )
+
+    setTimeout(() => {
+      this.errorMessage.set( null )
+      
+    }, duration)
+
+  }
+
+
+  clearErrorMessage() {
+    this.errorMessage.set( null )
+  }
+
+
+
+
 }

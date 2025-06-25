@@ -1,0 +1,40 @@
+.toast-banner {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background-color: green; 
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  z-index: 1000;
+  opacity: 0;
+  animation: slideIn 0.4s ease forwards;
+
+  // Optional fade out
+  &.hide {
+    animation: fadeOut 0.5s ease forwards;
+  }
+}
+
+// Slide in from top animation
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+// Fade out animation (optional if you dismiss it)
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}

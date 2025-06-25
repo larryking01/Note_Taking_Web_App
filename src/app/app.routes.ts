@@ -5,6 +5,9 @@ import { EditNote } from './components/edit-note/edit-note';
 import { ArchivedNotes } from './components/archived-notes/archived-notes';
 import { NotFound } from './components/not-found/not-found';
 import { NoteDetails } from './components/note-details/note-details';
+import { SignIn } from './components/sign-in/sign-in';
+import { SignUp } from './components/sign-up/sign-up';
+
 
 
 export const routes: Routes = [
@@ -32,6 +35,16 @@ export const routes: Routes = [
         path: 'create',
         component: CreateNote,
         title: 'Create New Note'
+    },
+    {
+        path: 'sign-in',
+        component: SignIn,
+        title: 'Sign In'
+    },
+    {
+        path: 'sign-up',
+        component: SignUp,
+        title: 'Sign Up'
     },
     {
         path: '**',
