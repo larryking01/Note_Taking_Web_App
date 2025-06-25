@@ -2,7 +2,23 @@
     <app-navbar></app-navbar>
 
     <section class="container">
-        <h3>All Lists</h3>
+        <article *ngIf="allNotes$ | async as notes; else loading">
+            <div *ngIf="notes.length > 0; else noNotes">
+                <div *ngFor="let note of notes" class="note-card">
+                    <h3>{{ note.title }}</h3>
+                    <p>{{ note.content }}</p>
+                </div>
+            </div>
+        </article>
+
+        <ng-template #loading>
+            <p>Loading notes...</p>
+        </ng-template>
+
+        <ng-template #noNotes>
+            <p>No notes available yet..</p>
+        </ng-template>
+
     </section>
 
 </main>
