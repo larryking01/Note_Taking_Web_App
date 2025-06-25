@@ -14,6 +14,7 @@ export class Sidebar {
 
   navigateToCreateNote() {
     this.router.navigate(['create'])
+    
   }
 
   navigateToHome() {
