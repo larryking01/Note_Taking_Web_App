@@ -3,10 +3,15 @@
 
 
     <div class="main">
-        <app-navbar />
+        <app-navbar [pageTitle]="'Note details'" />
 
         <section class="notes-content">
-            <form (ngSubmit)="updateNote()" [formGroup]="noteForm">
+            <div div class="delete-archive-action-btns">
+                <button type="button" class="delete-btn" (click)="deleteNote()">Delete note</button>
+                <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button>
+            </div>
+
+            <form (ngSubmit)="updateNote()" [formGroup]="noteForm" class="note-form">
                 <label for="note-title">Note Title</label>
                 <div>
                     <div *ngIf="noteForm.get('noteTitle')?.invalid && noteForm.get('noteTitle')?.touched">
@@ -36,8 +41,8 @@
                 <article class="form-actions-article">
                     <button type="submit" class="create-note-btn">Update note</button>
                     <button type="button" class="cancel-btn">Cancel</button>
-                    <button type="button" class="delete-btn" (click)="deleteNote()">Delete note</button>
-                    <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button>
+                    <!-- <button type="button" class="delete-btn" (click)="deleteNote()">Delete note</button>
+                    <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button> -->
                 </article>
             </form>
         </section>

@@ -6,11 +6,12 @@ import { NoteInterface } from '../../models/noteInterface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Sidebar } from "../../sidebar/sidebar";
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-display-notes',
-  imports: [Navbar, CommonModule, Sidebar],
+  imports: [Navbar, CommonModule, Sidebar, FormsModule],
   templateUrl: './display-notes.html',
   styleUrl: './display-notes.scss'
 })
@@ -24,12 +25,15 @@ export class DisplayNotes implements OnInit {
 
   AllNotesArray: NoteInterface[] = []
 
+  filteredNotes: NoteInterface[] = []
+
+  searchQuery: string = '';
 
   ngOnInit(): void {
     this.notesService.getUserNotesRealTime().subscribe({
       next: ( data => { 
         this.AllNotesArray = data
-        console.log("all notes fetched = ", this.AllNotesArray)
+        this.filterNotes()
        })
     })
   }
@@ -39,6 +43,18 @@ export class DisplayNotes implements OnInit {
     // this.router.navigate(['edit-note'])
     console.log("selected note = ", note)
     this.router.navigate(['edit-note', note.id ])
+
+  }
+
+
+  filterNotes(): void {
+    const query = this.searchQuery.toLocaleLowerCase()
+
+    this.filteredNotes = this.AllNotesArray.filter( note => 
+      note.title.toLowerCase().includes( query ) ||
+      note.content.toLowerCase().includes( query ) ||
+      note.tag.toLocaleLowerCase().includes( query )
+    )
 
   }
 

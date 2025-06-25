@@ -4,22 +4,24 @@
 
   <!-- Main Area -->
   <div class="main">
-    <app-navbar />
+    <app-navbar [pageTitle]="'Archived notes'"></app-navbar>
 
     <!-- Notes Content -->
     <section class="notes-content">
-      <div class="notes-grid">
-        <!-- <div class="note-card" *ngFor="let note of notes">
-          <h3>{{ note.title }}</h3>
-          <p>{{ note.content }}</p>
-          <small>{{ note.createdAt | date }}</small>
-        </div> -->
-
-        <div class="note-card">
-            <h3>vfdxjbn</h3>
-            <p>fzhgkbnkcb</p>
-            <small>kjfdgkdhi</small>
+      <div>
+        <div *ngIf="archivedNotes$ | async as notes">
+          <div *ngIf="notes.length; else noArchived" class="notes-grid">
+            <div *ngFor="let note of notes" class="note-card">
+              <h3>{{ note.title }}</h3>
+              <p>{{ note.content }}</p>
+              <small>{{ note.tag }}</small>
+            </div>
+          </div>
         </div>
+
+        <ng-template #noArchived>
+          <p>No archived notes found.</p>
+        </ng-template>
       </div>
     </section>
   </div>
