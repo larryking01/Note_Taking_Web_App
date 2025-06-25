@@ -5,11 +5,12 @@ import { Observable } from 'rxjs';
 import { NoteInterface } from '../../models/noteInterface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Sidebar } from "../../sidebar/sidebar";
 
 
 @Component({
   selector: 'app-display-notes',
-  imports: [Navbar, CommonModule],
+  imports: [Navbar, CommonModule, Sidebar],
   templateUrl: './display-notes.html',
   styleUrl: './display-notes.scss'
 })
@@ -33,11 +34,7 @@ export class DisplayNotes implements OnInit {
     })
   }
 
-
-  navigateToCreateNote() {
-    this.router.navigate(['create'])
-  }
-
+  
   navigateToEditNote(note: NoteInterface) {
     // this.router.navigate(['edit-note'])
     console.log("selected note = ", note)

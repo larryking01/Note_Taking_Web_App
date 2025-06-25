@@ -3,6 +3,9 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/authentication/auth-service';
+import { ErrorService } from '../../services/errorService/error-service';
+import { ToastService } from '../../services/successToast/toast-service';
+
 
 
 @Component({
@@ -17,6 +20,10 @@ export class SignIn {
 
   router = inject( Router )
 
+  toastService = inject( ToastService )
+
+  errorService = inject( ErrorService )
+
   signInForm: FormGroup = new FormGroup({
     email: new FormControl('', Validators.required ),
     password: new FormControl('', [ Validators.required, Validators.minLength(8)])
@@ -27,6 +34,7 @@ export class SignIn {
   signInUser() {
     if( this.signInForm.invalid ) {
       this.signInForm.markAllAsTouched();
+      this.errorService.handleError("Hang on — a few required details are missing. You’re almost there!")
       return;
     }
     else {
@@ -36,11 +44,11 @@ export class SignIn {
       .then( userCredentials => {
         console.log('User logged in: ', userCredentials.user )
         this.signInForm.reset()
-        alert("Logged in successfully");
+        this.toastService.handleSuccess(`Welcome back, ${ userCredentials.user.email }`)
         this.navigateToHome()
       })
       .catch( err => {
-        console.error( 'failed to log in user ', err)
+        this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
       })
     
     }
@@ -51,6 +59,11 @@ export class SignIn {
 
   navigateToHome() {
     this.router.navigate(['/'])
+  }
+
+
+  navigateToSignUp() {
+    this.router.navigate(['sign-up'])
   }
 
 

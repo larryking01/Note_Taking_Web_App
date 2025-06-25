@@ -1,15 +1,18 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { Navbar } from '../navbar/navbar';
+import { Sidebar } from '../../sidebar/sidebar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NoteInterface } from '../../models/noteInterface';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { CommonModule } from '@angular/common';
+import { ErrorService } from '../../services/errorService/error-service';
+import { ToastService } from '../../services/successToast/toast-service';
 
 @Component({
   selector: 'app-edit-note',
-  imports: [Navbar, CommonModule, ReactiveFormsModule],
+  imports: [Navbar, CommonModule, ReactiveFormsModule, Sidebar],
   templateUrl: './edit-note.html',
   styleUrl: './edit-note.scss'
 })
@@ -19,6 +22,10 @@ export class EditNote implements OnInit, OnDestroy {
 
   router = inject( Router )
 
+  errorService = inject( ErrorService )
+
+  toastService = inject( ToastService )
+
   selectedNoteID: string = ''
 
   noteService = inject( NoteCrudService )
@@ -26,7 +33,6 @@ export class EditNote implements OnInit, OnDestroy {
   // type later
   noteSubscription: any
 
-  // type this later
   userNote$!: Observable<NoteInterface | null>
 
   noteForm: FormGroup = new FormGroup({
@@ -54,6 +60,7 @@ export class EditNote implements OnInit, OnDestroy {
 
   }
 
+
   ngOnDestroy(): void {
     this.noteSubscription?.unsubscribe()
   }
@@ -61,6 +68,7 @@ export class EditNote implements OnInit, OnDestroy {
 
   updateNote(): void {
     if (this.noteForm.invalid || !this.selectedNoteID) {
+      this.errorService.handleError("Hang on — a few required details are missing. You’re almost there!")
       return;
     }
     else {
@@ -73,10 +81,11 @@ export class EditNote implements OnInit, OnDestroy {
       })
       .then(() => {
         console.log('Note updated successfully');
-        // Optionally show a toast or navigate
+        this.toastService.handleSuccess("Note updated successfully.")
+        this.router.navigate(['/']);
       })
       .catch(err => {
-        console.error('Error updating note:', err);
+        this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
       });
       }
 
@@ -91,11 +100,11 @@ export class EditNote implements OnInit, OnDestroy {
 
     this.noteService.deleteUserNote(this.selectedNoteID)
       .then(() => {
-        console.log('Note deleted successfully');
-        this.router.navigate(['/']); // redirect to notes dashboar
+        this.toastService.handleSuccess("Note updated successfully.")
+        this.router.navigate(['/']);
       })
       .catch(err => {
-        console.error('Error deleting note:', err);
+        this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
     });
   }
 
@@ -106,20 +115,11 @@ export class EditNote implements OnInit, OnDestroy {
 
     this.noteService.toggleArchive(this.selectedNoteID)
       .then(() => {
-        console.log('Archive state toggled');
+        this.toastService.handleSuccess("Note added to archives")
       })
       .catch(err => {
-        console.error('Error archiving note:', err);
+        this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
       });
   }
-
-
-
-
-
-
-
-
-
 
 }
