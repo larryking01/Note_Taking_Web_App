@@ -13,6 +13,8 @@ export class Sidebar  {
   router = inject( Router )
 
   fontType: string = '';
+  
+  themeType: string = '';
 
   navigateToCreateNote() {
     this.router.navigate(['create'])
@@ -58,6 +60,22 @@ export class Sidebar  {
     console.log('font type = ', this.fontType)
     document.body.classList.remove('serif', 'sans-serif', 'monospace')
     document.body.classList.add( this.fontType )
+  }
+
+
+  setThemeDark() {
+    this.themeType = 'dark'
+    document.body.classList.add('dark')
+    console.log( document.body.classList )
+
+  }
+
+
+  setThemeLight() {
+    this.themeType = 'light'
+    document.body.classList.remove('dark')
+    // document.body.classList.add('light')
+    
   }
 
 

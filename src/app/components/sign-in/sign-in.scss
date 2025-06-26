@@ -39,7 +39,7 @@
         }
 
         .add-new-user-btn {
-            @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
+            @include main-action-btn-style(100%);
             border: none;
             @include focus-visible-style();
             margin-bottom: 1rem;

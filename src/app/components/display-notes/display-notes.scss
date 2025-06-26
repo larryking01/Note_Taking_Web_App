@@ -75,18 +75,18 @@
   }
 
   .edit-note-btn {
-    @include main-action-btn-style(5rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(5rem);
     margin-top: 2rem
   }
 
 
   .archive-btn {
-    @include main-action-btn-style(6rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(6rem);
     margin-top: 2rem
   }
 
   .unarchive-btn {
-    @include main-action-btn-style(6rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(6rem);
     margin-top: 2rem
   }
 

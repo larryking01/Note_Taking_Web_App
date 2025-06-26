@@ -86,14 +86,14 @@
   }
 
   .create-note-btn {
-    @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(100%);
 
   }
 
 
 
   .cancel-btn {
-    @include main-action-btn-style(100%, red, $cancel-btn-hover-col);
+    @include main-action-btn-style(100%);
   }
 
   }

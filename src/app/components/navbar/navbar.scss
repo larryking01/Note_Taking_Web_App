@@ -1,4 +1,4 @@
-@use '../../styles/reusables' as *;
+@use '../../styles/_reusables' as *;
 
 
 /* Navbar */
@@ -27,6 +27,8 @@
 
 
   button {
-    @include main-action-btn-style( 8rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style( 8rem);
   }
+
+  
 }

@@ -15,7 +15,7 @@
   top: 0;
 
   .logo {
-    @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(100%);
     font-size: 1.4rem;
     font-weight: bold;
 
@@ -47,6 +47,6 @@
 
 
   .themes {
-    // background-color: red;
+    background-color: red;
   }
 }

@@ -22,15 +22,15 @@
 
 
   .delete-btn {
-    @include main-action-btn-style(10rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(10rem);
   }
 
   .archive-btn {
-    @include main-action-btn-style(8rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(8rem);
   }
 
   .unarchive-btn {
-    @include main-action-btn-style(8rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(8rem);
   }
 
 
@@ -105,14 +105,14 @@
   }
 
   .create-note-btn {
-    @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(100%);
 
   }
 
 
 
   .cancel-btn {
-    @include main-action-btn-style(100%, red, $cancel-btn-hover-col);
+    @include main-action-btn-style(100%);
   }
 
 }

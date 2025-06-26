@@ -1,1 +1,33 @@
 @use './app/styles/_resets' as *;
+
+
+/* themes */
+:root {
+  --primary-col: #1c1f26;
+  --affirm-btn-hover-col: #707070;
+  --cancel-btn-hover-col: tomato;
+  --btn-focus-outline: green;
+}
+
+
+body.dark {
+  --primary-col: green;
+  --affirm-btn-hover-col: #707070;
+  --cancel-btn-hover-col: tomato;
+}
+
+
+/* font toggling */
+body.serif {
+    font-family: serif;
+}
+
+
+body.sans-serif {
+    font-family: sans-serif;
+}
+
+
+body.monospace {
+    font-family: monospace;
+}
