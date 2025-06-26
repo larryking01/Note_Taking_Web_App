@@ -1,9 +1,8 @@
 /* variables */
 $primary-col: #1c1f26;
-$affirm-btn-hover-col: #2a2f3b;
+$affirm-btn-hover-col: #707070;
 $cancel-btn-hover-col: tomato;
-
-
+$button-accessibility-border: #fff;
 
 
 
@@ -21,7 +20,7 @@ $cancel-btn-hover-col: tomato;
     transition: background-color 0.3s ease, transform 0.2s ease;
 
     &:hover {
-      background-color: $hover-background; // slightly lighter for hover
+      background-color: $hover-background;
       transform: translateY(-1px);
     }
 
@@ -32,5 +31,17 @@ $cancel-btn-hover-col: tomato;
     &:disabled {
       background-color: #888;
       cursor: not-allowed;
+    }
+
+    @include focus-visible-style();
+
+}
+
+
+
+@mixin focus-visible-style() {
+    &:focus-visible {
+      outline: 2px solid green;
+      outline-offset: 1px;
     }
 }

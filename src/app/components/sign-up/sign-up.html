@@ -9,7 +9,7 @@
                 <small *ngIf="signUpForm.get('email')?.errors?.['required']">E-mail is required</small>
                 <small *ngIf="signUpForm.get('email')?.errors?.['email']">Invalid email format</small>
             </div>
-            <input type="email" id="email-input" class="email-input" formControlName="email">
+            <input type="email" id="email-input" class="email-input" formControlName="email" aria-required="true">
         </div>
 
         <label for="password-input">Password</label>
@@ -18,10 +18,10 @@
                 <small *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required</small>
                 <small *ngIf="signUpForm.get('password')?.errors?.['password']">Invalid email format</small>
             </div>
-            <input type="password" id="password-input" class="password-input" formControlName="password">
+            <input type="password" id="password-input" class="password-input" formControlName="password" aria-required="true">
         </div>
 
-        <button type="submit" class="add-new-user-btn">
+        <button type="submit" class="add-new-user-btn" aria-label="Register">
             Register
         </button>
 

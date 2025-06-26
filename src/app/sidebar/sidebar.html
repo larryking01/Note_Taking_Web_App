@@ -1,11 +1,18 @@
   <!-- Sidebar -->
 <aside class="sidebar">
-  <div class="logo">📝 Notes</div>
-  <nav>
+  <button class="logo" routerLink="/" aria-label="See all notes">📝 Notes</button>
+  <nav aria-label="Main Navigation">
     <ul>
-      <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">All Notes</li>
-      <li routerLink="/create" routerLinkActive="active">Create Note</li>
-      <li routerLink="/archived" routerLinkActive="active">Archived</li>
+      <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
+          tabindex="0" role="button" (keydown)="handleKeyDown($event, '/')" aria-label="View all notes">
+        All Notes
+      </li>
+      <li routerLink="/create" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/create')" aria-label="Create new note">
+        Create Note
+      </li>
+      <li routerLink="/archived" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/archived')" aria-label="View archived notes">
+        Archived
+      </li>
     </ul>
   </nav>
 </aside>

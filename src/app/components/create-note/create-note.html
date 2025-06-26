@@ -11,7 +11,7 @@
                     <div *ngIf="noteForm.get('noteTitle')?.invalid && noteForm.get('noteTitle')?.touched">
                         <small *ngIf="noteForm.get('noteTitle')?.errors?.['required']">Note title is required</small>
                     </div>
-                    <input type="text" class="note-title" id="note-title" formControlName="noteTitle">
+                    <input type="text" class="note-title" id="note-title" formControlName="noteTitle" aria-required="true">
                 </div>
 
                 <label for="note-content">Note Content</label>
@@ -19,7 +19,7 @@
                     <div *ngIf="noteForm.get('noteContent')?.invalid && noteForm.get('noteContent')?.touched">
                         <small *ngIf="noteForm.get('noteContent')?.errors?.['required']">Note content is required</small>
                     </div>
-                    <textarea rows="10" class="note-content" id="note-content" formControlName="noteContent"></textarea>
+                    <textarea rows="10" class="note-content" id="note-content" formControlName="noteContent" aria-required="true"></textarea>
                 </div>
 
                 <div *ngIf="noteForm.get('noteTag')?.invalid && noteForm.get('noteTag')?.touched">
@@ -35,8 +35,8 @@
                 </select>
 
                 <article class="form-actions-article">
-                    <button type="submit" class="create-note-btn">Create note</button>
-                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="create-note-btn" aria-label="Create note">Create note</button>
+                    <button type="button" class="cancel-btn" aria-label="Cancel note creation">Cancel</button>
                 </article>
             </form>
         </section>

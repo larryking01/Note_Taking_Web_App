@@ -23,7 +23,9 @@
             height: 2rem;
             margin-bottom: 3rem;
             border-radius: 0.625rem;
-            padding: 1rem
+            padding: 1rem;
+            border: 1px solid black;
+            @include focus-visible-style();
         }
 
         .password-input {
@@ -31,12 +33,16 @@
             height: 2rem;
             margin-bottom: 3rem;
             border-radius: 0.625rem;
-            padding: 1rem
+            padding: 1rem;
+            border: 1px solid black;
+            @include focus-visible-style();
         }
 
         .add-new-user-btn {
             @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
             margin-bottom: 1rem;
+            border: 1px solid black;
+            @include focus-visible-style();
         }
 
 

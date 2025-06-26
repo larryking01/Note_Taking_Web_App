@@ -25,4 +25,19 @@ export class Sidebar {
     this.router.navigate(['archived'])
   }
 
+  handleKeyDown(event: KeyboardEvent, route: string) {
+    if( event.key === 'Enter' || event.key === ' ') {
+      this.navigateTo( route )
+    }
+  }
+
+
+  navigateTo( route: string ) {
+    this.router.navigate([ route ])
+  }
+
+
+
+
+
 }
