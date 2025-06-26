@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Sidebar } from "../../sidebar/sidebar";
 import { FormsModule } from '@angular/forms';
-
+import { ToastService } from '../../services/successToast/toast-service';
+import { ErrorService } from '../../services/errorService/error-service';
 
 @Component({
   selector: 'app-display-notes',
@@ -21,6 +22,10 @@ export class DisplayNotes implements OnInit {
 
   router = inject( Router )
 
+  toastService = inject( ToastService )
+
+  errorService = inject( ErrorService )
+
   allNotes$: Observable<NoteInterface[]> = this.notesService.getUserNotesRealTime()
 
   AllNotesArray: NoteInterface[] = []
@@ -28,6 +33,8 @@ export class DisplayNotes implements OnInit {
   filteredNotes: NoteInterface[] = []
 
   searchQuery: string = '';
+
+  selectedNoteID: string = ''
 
   ngOnInit(): void {
     this.notesService.getUserNotesRealTime().subscribe({
@@ -56,6 +63,29 @@ export class DisplayNotes implements OnInit {
       note.tag.toLocaleLowerCase().includes( query )
     )
 
+  }
+
+
+  archiveNote( note: NoteInterface ): void {
+    this.selectedNoteID = note.id
+    this.notesService.toggleArchive(this.selectedNoteID)
+      .then(() => {
+        this.toastService.handleSuccess("Note added to archives")
+      })
+      .catch(err => {
+        this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
+      });
+  }
+
+  unarchiveNote( note: NoteInterface ): void {
+    this.selectedNoteID = note.id
+    this.notesService.toggleArchive(this.selectedNoteID)
+      .then(() => {
+        this.toastService.handleSuccess("Note removed from archives")
+      })
+      .catch(err => {
+        this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
+      });
   }
 
 

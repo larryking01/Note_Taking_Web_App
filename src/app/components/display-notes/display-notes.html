@@ -8,13 +8,26 @@
             <input type="text" placeholder="Search notes by title, tag or content.." 
                    [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" class="search-input"/>
 
-
                 <article *ngIf="allNotes$ | async as notes; else loading">
                     <div *ngIf="notes.length > 0; else noNotes" class="notes-grid">
                         <div *ngFor="let note of filteredNotes" class="note-card">
-                            <h3>{{ note.title }}</h3>
-                            <p>{{ note.content }}</p>
-                            <button (click)="navigateToEditNote(note)" class="edit-note-btn">Edit</button>
+                            <p class="note-date">{{ note.createdAt }}</p>
+                            <h3 class="note-title">{{ note.title }}</h3>
+                            <hr />
+                            <p class="note-content">{{ note.content }}</p>
+                            <p class="tags">
+                                <span>
+                                    <img src="assets/tags-light.png" class="tag-img" />
+                                </span>
+                                {{ note.tag }}
+                            </p>
+                            <p>isArchived: {{ note.isArchived }}</p>
+                            
+                            <article class="action-btns">
+                                <button (click)="navigateToEditNote(note)" class="edit-note-btn">Details</button>
+                                <button (click)="archiveNote( note )" class="archive-btn" *ngIf="note.isArchived === false">Archive</button>
+                                <button (click)="unarchiveNote( note)"  class="unarchive-btn" *ngIf="note.isArchived === true">Unarchive</button>
+                            </article>
                         </div>
                     </div>
                 </article>

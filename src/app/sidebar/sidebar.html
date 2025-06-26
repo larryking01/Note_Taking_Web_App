@@ -1,13 +1,40 @@
   <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="logo">📝 Notes</div>
-    <nav>
+<aside class="sidebar">
+  <main class="nav-main">
+
+    <button class="logo" routerLink="/" aria-label="See all notes">📝 Notes</button>
+
+    <nav aria-label="Main Navigation">
       <ul>
-        <li class="active" (click)="navigateToHome()">All Notes</li>
-        <li (click)="navigateToCreateNote()">Create Note</li>
-        <li (click)="navigateToArchived()">Archived</li>
-        <li>Settings</li>
-        <li>Logout</li>
+        <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
+            tabindex="0" role="button" (keydown)="handleKeyDown($event, '/')" aria-label="View all notes">
+          All Notes
+        </li>
+        <li routerLink="/create" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/create')" aria-label="Create new note">
+          Create Note
+        </li>
+        <li routerLink="/archived" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/archived')" aria-label="View archived notes">
+          Archived
+        </li>
       </ul>
     </nav>
-  </aside>
+
+  </main>
+
+  <article class="themes">
+    <h3>Preferences</h3>
+    <section class="fonts">
+      <h3>Fonts:</h3>
+      <button class="serif-font" (click)="setFontSerif()">Serif</button>
+      <button class="sans-serif" (click)="setFontSansSerif()">Sans-Serif</button>
+      <button class="monospace" (click)="setFontMonospace()">Monospace</button>
+    </section>
+
+    <section class="colors">
+      <h3>Themes:</h3>
+      <button class="light-theme-btn">Light</button>
+      <button class="dark-theme-btn">Dark</button>
+      <button class="custom-theme-btn">Custom</button>
+    </section>
+  </article>
+</aside>

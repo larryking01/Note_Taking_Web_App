@@ -2,8 +2,8 @@
     <span class="page-title" (click)="navigateToHome()">{{ pageTitle }}</span>
     <div class="user-info">
         <span *ngIf="currentUserEmail">{{ currentUserEmail }}</span>
-        <button *ngIf="isLoggedIn" (click)="signOutUser()">Sign Out</button>
-        <button *ngIf="!isLoggedIn"(click)="navigateToLogin()">Sign In</button>
+        <button *ngIf="isLoggedIn" (click)="signOutUser()" aria-label="Sigo out">Sign Out</button>
+        <button *ngIf="!isLoggedIn"(click)="navigateToLogin()" aria-label="Sign in">Sign In</button>
         <!-- <img src="https://via.placeholder.com/30" alt="avatar" /> -->
     </div>
 </header>

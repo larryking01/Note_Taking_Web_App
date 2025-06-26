@@ -4,7 +4,6 @@
 .layout {
   display: flex;
   min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
 }
 
 
@@ -22,6 +21,21 @@
   padding: 2rem;
 
 
+  .delete-btn {
+    @include main-action-btn-style(10rem, $primary-col, $affirm-btn-hover-col);
+  }
+
+  .archive-btn {
+    @include main-action-btn-style(8rem, $primary-col, $affirm-btn-hover-col);
+  }
+
+  .unarchive-btn {
+    @include main-action-btn-style(8rem, $primary-col, $affirm-btn-hover-col);
+  }
+
+
+
+
   .note-form {
     // background-color: red;
     max-width: 70%;
@@ -35,6 +49,7 @@
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;  
+      @include focus-visible-style();
     }
 
 
@@ -45,6 +60,7 @@
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;  
+      @include focus-visible-style();
     }
 
 
@@ -68,11 +84,17 @@
     background-position: right 1rem center;
     background-size: 1rem;
 
-    &:focus {
-      outline: none;
-      border-color: #5b9bd5;
-      box-shadow: 0 0 0 2px rgba(91, 155, 213, 0.3);
-    }
+
+    // &:focus {
+    //   outline: none;
+    //   border-color: #5b9bd5;
+    //   box-shadow: 0 0 0 2px rgba(91, 155, 213, 0.3);
+    // }
+
+    @include focus-visible-style();
+
+
+
   }
 
 

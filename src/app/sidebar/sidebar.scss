@@ -1,19 +1,24 @@
+@use '../styles/_reusables' as *;
+
 /* Sidebar */
 .sidebar {
   width: 240px;
   height: 100vh;
-  background-color: #1c1f26;
+  background-color: $primary-col;
   color: white;
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 2rem;
   position: sticky;
   top: 0;
 
   .logo {
+    @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
     font-size: 1.4rem;
     font-weight: bold;
+
   }
 
   nav ul {
@@ -30,6 +35,18 @@
       &:hover {
         background-color: #2a2f3b;
       }
+
+      &:focus-visible {
+        outline: 2px solid green;
+        outline-offset: 1px;
+      }
+
+
     }
+  }
+
+
+  .themes {
+    // background-color: red;
   }
 }
