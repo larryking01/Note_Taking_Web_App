@@ -19,6 +19,7 @@
 /* Notes */
 .notes-content {
   padding: 2rem;
+  // background-color: var(--main-content-bg);
 
   .notes-grid {
     display: grid;
@@ -27,7 +28,7 @@
     // background-color: red;
 
     .note-card {
-      background-color: white;
+      background-color: var(--note-card-bg-work);
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -100,11 +101,8 @@
     border-radius: 6px;  
 
 
-    &:focus-visible {
-      outline: 2px solid green;
-      outline-offset: 1px;
-    }
-  
+    @include focus-visible-style();
+
   }
 
 }

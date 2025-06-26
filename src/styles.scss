@@ -3,17 +3,27 @@
 
 /* themes */
 :root {
-  --primary-col: #1c1f26;
-  --affirm-btn-hover-col: #707070;
+  --primary-col: #292966;
+  --affirm-btn-hover-col: #5C5C99;
+  --navbar-bg: #fff;
+  --note-card-bg-work: #F0F0F0;
+  --btn-focus-outline: #A3A3CC;
+  --cancel-btn-bg: red;
   --cancel-btn-hover-col: tomato;
-  --btn-focus-outline: green;
+  --main-content-bg: #fff;
 }
 
 
 body.dark {
-  --primary-col: green;
+  --primary-col: #1c1f26;
   --affirm-btn-hover-col: #707070;
+  --cancel-btn-bg: red;
   --cancel-btn-hover-col: tomato;
+  --navbar-bg: #CCCCFF;
+  --note-card-bg-work: #181818;
+  --font-color: #fff;
+//   --main-content-bg: blue;
+  --btn-focus-outline: green;
 }
 
 

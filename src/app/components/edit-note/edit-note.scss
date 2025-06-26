@@ -112,7 +112,7 @@
 
 
   .cancel-btn {
-    @include main-action-btn-style(100%);
+    @include cancel-action-btn-style(100%);
   }
 
 }
