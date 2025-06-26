@@ -22,6 +22,21 @@
   padding: 2rem;
 
 
+  .delete-btn {
+    @include main-action-btn-style(10rem, $primary-col, $affirm-btn-hover-col);
+  }
+
+  .archive-btn {
+    @include main-action-btn-style(8rem, $primary-col, $affirm-btn-hover-col);
+  }
+
+  .unarchive-btn {
+    @include main-action-btn-style(8rem, $primary-col, $affirm-btn-hover-col);
+  }
+
+
+
+
   .note-form {
     // background-color: red;
     max-width: 70%;

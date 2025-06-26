@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [ RouterModule ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })

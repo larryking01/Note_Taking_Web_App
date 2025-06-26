@@ -8,7 +8,8 @@
         <section class="notes-content">
             <div div class="delete-archive-action-btns">
                 <button type="button" class="delete-btn" (click)="deleteNote()">Delete note</button>
-                <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button>
+                <!-- <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button>
+                <button type="button" class="unarchive-btn" (click)="unarchiveNote()">Unarchive</button> -->
             </div>
 
             <form (ngSubmit)="updateNote()" [formGroup]="noteForm" class="note-form">

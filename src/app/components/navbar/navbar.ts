@@ -46,6 +46,7 @@ export class Navbar {
     this.router.navigate(['sign-in'])
   }
 
+  
   navigateToHome() {
     this.router.navigate(['/'])
   }

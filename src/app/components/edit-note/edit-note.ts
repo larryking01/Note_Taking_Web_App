@@ -122,4 +122,16 @@ export class EditNote implements OnInit, OnDestroy {
       });
   }
 
+  unarchiveNote(): void {
+    if (!this.selectedNoteID) return;
+
+    this.noteService.toggleArchive(this.selectedNoteID)
+      .then(() => {
+        this.toastService.handleSuccess("Note removed from archives")
+      })
+      .catch(err => {
+        this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
+      });
+  }
+
 }
