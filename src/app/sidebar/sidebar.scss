@@ -9,15 +9,12 @@
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 2rem;
   position: sticky;
   top: 0;
 
   .logo {
-    // font-size: 1.4rem;
-    // font-weight: bold;
-    // border: none;
-    // background-color: $primary-col;
     @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
     font-size: 1.4rem;
     font-weight: bold;
@@ -46,5 +43,10 @@
 
 
     }
+  }
+
+
+  .themes {
+    // background-color: red;
   }
 }

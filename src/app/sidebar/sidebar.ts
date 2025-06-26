@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 
@@ -8,9 +8,11 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })
-export class Sidebar {
+export class Sidebar  {
 
   router = inject( Router )
+
+  fontType: string = '';
 
   navigateToCreateNote() {
     this.router.navigate(['create'])
@@ -37,6 +39,26 @@ export class Sidebar {
   }
 
 
+  setFontSerif() {
+    this.fontType = 'serif'
+    console.log('font type = ', this.fontType)
+    document.body.classList.remove('serif', 'sans-serif', 'monospace')
+    document.body.classList.add( this.fontType )
+  }
+
+  setFontSansSerif() {
+    this.fontType = 'sans-serif'
+    console.log('font type = ', this.fontType)
+    document.body.classList.remove('serif', 'sans-serif', 'monospace')
+    document.body.classList.add( this.fontType )
+  }
+
+  setFontMonospace() {
+    this.fontType = 'monospace'
+    console.log('font type = ', this.fontType)
+    document.body.classList.remove('serif', 'sans-serif', 'monospace')
+    document.body.classList.add( this.fontType )
+  }
 
 
 
