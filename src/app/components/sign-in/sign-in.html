@@ -1,3 +1,5 @@
+<div class="layout">
+
 <section class="sign-up-container">
     <h3 class="auth-type-header">Sign in</h3>
 
@@ -22,13 +24,18 @@
         </div>
 
         <button type="submit" class="add-new-user-btn" aria-label="Sign in">
-            Sign in
+            <div class="update-note-tag-icon">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                <p class="button-text">Sign in</p>
+            </div>
         </button>
 
         <div class="account-recovery">
-            <p (click)="navigateToSignUp()">Don't have an account? Register here</p>
-            <p>Forgot password? Reset here</p>
+            <p (click)="navigateToSignUp()">New user? Register here</p>
+            <p>Forgot password? Reset now</p>
         </div>
     </form>
 </section>
+
+</div>
 

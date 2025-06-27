@@ -18,6 +18,22 @@
 /* Notes */
 .notes-content {
   padding: 2rem;
+  background-color: var(--main-content-bg);
+  height: 100vh;
+
+  .update-note-tag-icon {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  label {
+    color: var(--font-color);
+  }
+
+  small {
+    color: var(--font-color);
+  }
 
 
   .note-form {
@@ -26,6 +42,11 @@
     margin: 0 auto;
 
 
+    small {
+      color: red;
+    }
+
+    
     .note-title {
       width: 100%;
       padding: 1rem 1rem;
@@ -86,14 +107,13 @@
   }
 
   .create-note-btn {
-    @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(100%);
 
   }
 
 
-
   .cancel-btn {
-    @include main-action-btn-style(100%, red, $cancel-btn-hover-col);
+    @include cancel-action-btn-style(100%);
   }
 
   }

@@ -19,6 +19,14 @@
 /* Notes */
 .notes-content {
   padding: 2rem;
+  background-color: var(--main-content-bg);
+  height: 100vh;
+
+
+  .no-notes-text {
+    color: var(--font-color);
+  }
+
 
   .notes-grid {
     display: grid;
@@ -27,7 +35,7 @@
     // background-color: red;
 
     .note-card {
-      background-color: white;
+      background-color: var(--note-card-bg-work);
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -37,13 +45,38 @@
         transform: translateY(-2px);
       }
 
+      .note-title-icon {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .note-tag-icon {
+        display: flex;
+        justify-content: start;
+        gap: 0.5rem;
+      }
+
       .note-title {
         margin: 1rem 0 0.5rem;
+        color: var(--font-color);
+      }
+
+      .note-tag {
+        margin: 1rem 0 0.5rem;
+        color: var(--font-color);
+        font-style: italic;
+      }
+
+      .note-icon {
+         color: var(--icon-color);
+         align-self: center;
+         
       }
 
       .note-date {
         color: #555;
         font-size: 0.9rem;
+        margin-bottom: 1rem;
       }
 
       .tags {
@@ -53,10 +86,13 @@
       .tag-img {
         width: 15px;
         margin-top: 1rem;
+        align-self: center;
+        color: var(--icon-color);
       }
 
       .note-content {
         margin-top: 1rem;
+        color: var(--font-color);
       }
 
       small {
@@ -75,18 +111,18 @@
   }
 
   .edit-note-btn {
-    @include main-action-btn-style(5rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(6rem);
     margin-top: 2rem
   }
 
 
   .archive-btn {
-    @include main-action-btn-style(6rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(6rem);
     margin-top: 2rem
   }
 
   .unarchive-btn {
-    @include main-action-btn-style(6rem, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(6.3rem);
     margin-top: 2rem
   }
 
@@ -100,11 +136,8 @@
     border-radius: 6px;  
 
 
-    &:focus-visible {
-      outline: 2px solid green;
-      outline-offset: 1px;
-    }
-  
+    @include focus-visible-style();
+
   }
 
 }

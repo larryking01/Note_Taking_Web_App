@@ -4,7 +4,7 @@
 .sidebar {
   width: 240px;
   height: 100vh;
-  background-color: $primary-col;
+  background-color: var(--primary-col);
   color: white;
   padding: 1.5rem 1rem;
   display: flex;
@@ -15,7 +15,7 @@
   top: 0;
 
   .logo {
-    @include main-action-btn-style(100%, $primary-col, $affirm-btn-hover-col);
+    @include main-action-btn-style(100%);
     font-size: 1.4rem;
     font-weight: bold;
 
@@ -33,20 +33,133 @@
 
       &.active,
       &:hover {
-        background-color: #2a2f3b;
+        background-color: var(--affirm-btn-hover-col);
       }
 
-      &:focus-visible {
-        outline: 2px solid green;
-        outline-offset: 1px;
-      }
+      @include focus-visible-style();
+
+    }
 
 
+    .sidebar-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+
+   .sidebar-section-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+
+
+
+  }
+
+
+  .fonts {
+    margin-bottom: 3rem;
+  }
+
+
+  .colors {
+
+    .theme-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+    }
+
+    .light-theme-btn {
+      background-color: #fff;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: 1px dashed #888;
+      border-radius: 0.625rem;
+      cursor: pointer;
+    }
+
+    .dark-theme-btn {
+      background-color: black;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: 1px dashed #888;
+      border-radius: 0.625rem;
+      cursor: pointer;
+    }
+
+    .orange-theme-btn {
+      background-color: orange;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: 1px dashed #888;
+      border-radius: 0.625rem;
+      cursor: pointer;
+    }
+
+    .green-theme-btn {
+      background-color: #003e29;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: 1px dashed #888;
+      border-radius: 0.625rem;
+      cursor: pointer;
+
+    }
+
+    .theme-icon {
+      width: 40px;
+      
     }
   }
 
 
-  .themes {
-    // background-color: red;
+.font-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+
+  button {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--primary-col);
+    outline: 1px solid var(--btn-focus-outline, #5b9bd5);
+    color: #fff;
+
+    // Font-specific styling
+    &:nth-child(1) { font-family: 'Inter', sans-serif; }
+    &:nth-child(2) { font-family: 'Merriweather', serif; }
+    &:nth-child(3) { font-family: 'Fira Code', monospace; }
+
+    &:hover {
+      background-color: var(--affirm-btn-hover-col);
+      border-color: #999;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--btn-focus-outline, #5b9bd5);
+      outline-offset: 2px;
+
+    }
+
+    &.active {
+      outline-offset: 2px;
+      color: white;
+      border-color: transparent;
+      font-weight: 600;
+      color: #333;
+      background-color: #f9f9f9;
+    }
   }
+}
+  
 }

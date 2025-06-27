@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../services/authentication/auth-service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   selector: 'app-navbar',
   imports: [CommonModule],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.scss'
+  styleUrl: './navbar.scss',
+  // encapsulation: ViewEncapsulation.None
 })
 export class Navbar {
   @Input() pageTitle: string = ''

@@ -2,19 +2,48 @@
 <aside class="sidebar">
   <main class="nav-main">
 
-    <button class="logo" routerLink="/" aria-label="See all notes">📝 Notes</button>
+    <button class="logo" routerLink="/" aria-label="See all notes">📝 Notedly</button>
 
     <nav aria-label="Main Navigation">
       <ul>
         <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
             tabindex="0" role="button" (keydown)="handleKeyDown($event, '/')" aria-label="View all notes">
-          All Notes
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">
+                <i class="fa-solid fa-note-sticky"></i>             
+                <p>All Notes</p>
+            </div>
+
+            <p>
+              {{ notesService.totalNotes() }}
+            </p>
+          </div>
         </li>
+
         <li routerLink="/create" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/create')" aria-label="Create new note">
-          Create Note
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">
+              <i class="fa-solid fa-square-pen note-icon"></i>    
+              <p>Create Note</p>
+            </div>
+
+            <!-- <p>
+              count
+            </p> -->
+          </div>
         </li>
+
         <li routerLink="/archived" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/archived')" aria-label="View archived notes">
-          Archived
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">
+              <i class="fa-solid fa-lock"></i>    
+              <p>Archived</p>
+            </div>
+
+            <p>
+              {{ notesService.totalArchivedNotes() }}
+            </p>
+          </div>
         </li>
       </ul>
     </nav>
@@ -25,16 +54,25 @@
     <h3>Preferences</h3>
     <section class="fonts">
       <h3>Fonts:</h3>
-      <button class="serif-font" (click)="setFontSerif()">Serif</button>
-      <button class="sans-serif" (click)="setFontSansSerif()">Sans-Serif</button>
-      <button class="monospace" (click)="setFontMonospace()">Monospace</button>
+        <div class="font-selector">
+          <button [class.active]="fontType === 'sans'" (click)="setFont('sans')">Sans</button>
+          <button [class.active]="fontType === 'sans-serif'" (click)="setFont('sans-serif')">Serif</button>
+          <button [class.active]="fontType === 'monospace'" (click)="setFont('monospace')">Mono</button>
+        </div>
     </section>
 
     <section class="colors">
-      <h3>Themes:</h3>
-      <button class="light-theme-btn">Light</button>
-      <button class="dark-theme-btn">Dark</button>
-      <button class="custom-theme-btn">Custom</button>
+      <h3>Themes:</h3>      
+      <div class="theme-buttons">
+        <button class="light-theme-btn" (click)="setThemeLight()" aria-label="light-theme-toggle"></button>
+
+        <button class="dark-theme-btn" (click)="setThemeDark()"></button>
+
+        <!-- <button class="orange-theme-btn" (click)="setThemeDark()"></button> -->
+
+        <button class="green-theme-btn" (click)="setThemeGreen()"></button>
+      </div>
+
     </section>
   </article>
 </aside>

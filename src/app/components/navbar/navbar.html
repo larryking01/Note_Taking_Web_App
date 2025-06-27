@@ -1,9 +1,16 @@
 <header class="navbar">
     <span class="page-title" (click)="navigateToHome()">{{ pageTitle }}</span>
     <div class="user-info">
+        <i class="fa-solid fa-user user-icon" *ngIf="currentUserEmail"></i>
+        
         <span *ngIf="currentUserEmail">{{ currentUserEmail }}</span>
-        <button *ngIf="isLoggedIn" (click)="signOutUser()" aria-label="Sigo out">Sign Out</button>
-        <button *ngIf="!isLoggedIn"(click)="navigateToLogin()" aria-label="Sign in">Sign In</button>
-        <!-- <img src="https://via.placeholder.com/30" alt="avatar" /> -->
+
+        <button *ngIf="isLoggedIn" (click)="signOutUser()" aria-label="Sign out" title="Sign out">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
+
+        <button *ngIf="!isLoggedIn"(click)="navigateToLogin()" aria-label="Sign in" class="sign-in-btn">
+            Sign In
+        </button>
     </div>
 </header>

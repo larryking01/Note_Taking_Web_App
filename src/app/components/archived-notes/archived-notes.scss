@@ -1,3 +1,6 @@
+@use '../../styles/_reusables' as *;
+
+
 .layout {
   display: flex;
   min-height: 100vh;
@@ -16,6 +19,8 @@
 /* Notes */
 .notes-content {
   padding: 2rem;
+  background-color: var(--main-content-bg);
+  height: 100vh;
 
   .notes-grid {
     display: grid;
@@ -23,32 +28,58 @@
     gap: 1.5rem;
 
     .note-card {
-      background-color: white;
+      background-color: var(--note-card-bg-work);
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease;
+      color: var(--font-color);
 
       &:hover {
         transform: translateY(-2px);
       }
 
-      h3 {
+      .note-title {
         margin: 0 0 0.5rem;
+        color: var(--font-color);
       }
 
-      p {
-        color: #555;
+      .note-content {
+        // color: #555;
+        color: var(--font-color);
         font-size: 0.9rem;
       }
 
-      small {
-        display: block;
-        margin-top: 0.75rem;
-        color: #888;
-        font-size: 0.75rem;
+      .note-tag {
+        margin: 1rem 0 0.5rem;
+        color: var(--font-color);
+        font-style: italic;
       }
+
+      .note-tag-icon {
+        display: flex;
+        justify-content: start;
+        gap: 0.5rem;
+      }
+
+      .tag-img {
+        width: 15px;
+        margin-top: 1rem;
+        align-self: center;
+        color: var(--icon-color);
+      }
+
+      .unarchive-btn {
+        @include main-action-btn-style(6.3rem);
+        margin-top: 2rem
+      }
+      
     }
+  }
+
+  .no-notes-text {
+      color: var(--font-color);
+      font-size: 0.9rem;
   }
 }
 

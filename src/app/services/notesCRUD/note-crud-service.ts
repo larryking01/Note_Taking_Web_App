@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal, WritableSignal } from '@angular/core';
 import { NoteInterface } from '../../models/noteInterface';
 import { BehaviorSubject } from 'rxjs'
 import { Firestore, collection, addDoc, CollectionReference, getDoc,
@@ -19,6 +19,10 @@ export class NoteCrudService {
 
   private firestore = inject( Firestore )
   private auth = inject( Auth )
+
+  totalNotes: WritableSignal<number> = signal(0)
+
+  totalArchivedNotes: WritableSignal<number> = signal(0)
 
   // currentUserEmail: string | null | undefined = null;
 

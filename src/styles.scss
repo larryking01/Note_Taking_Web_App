@@ -1,1 +1,77 @@
 @use './app/styles/_resets' as *;
+
+
+/* themes */
+:root {
+  --primary-col: #292966;
+  --icon-color: #292966;
+  --affirm-btn-hover-col: #5C5C99;
+  --navbar-bg: #f0f0f0;
+  --note-card-bg-work: #F0F0F0;
+  --btn-focus-outline: #A3A3CC;
+  --cancel-btn-bg: red;
+  --cancel-btn-hover-col: tomato;
+  --main-content-bg: #fff;
+  --initial-black: #1c1f26;
+  --font-color: black;
+}
+
+
+body.dark {
+  --primary-col: black;
+  --icon-color: #fff;
+  --affirm-btn-hover-col: #1c1f26;
+  // --affirm-btn-hover-col: #707070;
+  --cancel-btn-bg: red;
+  --cancel-btn-hover-col: tomato;
+  --navbar-bg: #1c1f26 ;
+  --note-card-bg-work: black;
+  --font-color: #fff;
+  --main-content-bg: #121212;
+  --btn-focus-outline: green;
+  --font-color: #fff;
+}
+
+
+body.green {
+  --primary-col: #003e29;
+  --icon-color: #003e29;
+  --affirm-btn-hover-col: #1c1f26;
+  --cancel-btn-bg: red;
+  --cancel-btn-hover-col: tomato;
+  --navbar-bg: #1c1f26 ;
+  --note-card-bg-work: black;
+  --font-color: #fff;
+  --main-content-bg: #121212;
+  --btn-focus-outline: green;
+  --font-color: #fff;
+
+  // --primary-col: black;
+  // --affirm-btn-hover-col: #1c1f26;
+  // --cancel-btn-bg: red;
+  // --cancel-btn-hover-col: tomato;
+  // --navbar-bg: #1c1f26 ;
+  // --note-card-bg-work: black;
+  // --font-color: #fff;
+  // --main-content-bg: #121212;
+  // --btn-focus-outline: green;
+  // --font-color: #fff;
+
+
+}
+
+
+/* font toggling */
+body.sans {
+    font-family: serif;
+}
+
+
+body.sans-serif {
+    font-family: sans-serif;
+}
+
+
+body.monospace {
+    font-family: monospace;
+}
