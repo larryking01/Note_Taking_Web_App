@@ -4,6 +4,7 @@
 /* themes */
 :root {
   --primary-col: #292966;
+  --icon-color: #292966;
   --affirm-btn-hover-col: #5C5C99;
   --navbar-bg: #f0f0f0;
   --note-card-bg-work: #F0F0F0;
@@ -18,6 +19,7 @@
 
 body.dark {
   --primary-col: black;
+  --icon-color: #fff;
   --affirm-btn-hover-col: #1c1f26;
   // --affirm-btn-hover-col: #707070;
   --cancel-btn-bg: red;
@@ -33,6 +35,7 @@ body.dark {
 
 body.green {
   --primary-col: #003e29;
+  --icon-color: #003e29;
   --affirm-btn-hover-col: #1c1f26;
   --cancel-btn-bg: red;
   --cancel-btn-hover-col: tomato;

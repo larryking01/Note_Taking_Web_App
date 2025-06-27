@@ -12,22 +12,45 @@
                 <article *ngIf="allNotes$ | async as notes; else loading">
                     <div *ngIf="notes.length > 0; else noNotes" class="notes-grid">
                         <div *ngFor="let note of filteredNotes" class="note-card">
-                            <p class="note-date">{{ note.createdAt }}</p>
-                            <h3 class="note-title">{{ note.title }}</h3>
+                            <div class="note-title-icon">
+                                <i class="fa-solid fa-calendar-week note-icon"></i>
+                                <p class="note-date">{{ note.createdAt }}</p>
+                            </div>
+
+                            <div class="note-title-icon">
+                                <h3 class="note-title">{{ note.title }}</h3>
+                                <i class="fa-solid fa-square-pen note-icon"></i>
+                            </div>
                             <hr />
-                            <p class="note-content">{{ note.content }}</p>
-                            <p class="tags">
-                                <span>
-                                    <img src="assets/tags-light.png" class="tag-img" />
-                                </span>
-                                {{ note.tag }}
-                            </p>
-                            <p>isArchived: {{ note.isArchived }}</p>
+
+                            <p class="note-content">"{{ note.content }}"</p>
+                            
+                            <div class="note-tag-icon">
+                                <i class="fa-solid fa-tag tag-img"></i>
+                                <h3 class="note-title">{{ note.tag }}</h3>
+                            </div>
                             
                             <article class="action-btns">
-                                <button (click)="navigateToEditNote(note)" class="edit-note-btn">Details</button>
-                                <button (click)="archiveNote( note )" class="archive-btn" *ngIf="note.isArchived === false">Archive</button>
-                                <button (click)="unarchiveNote( note)"  class="unarchive-btn" *ngIf="note.isArchived === true">Unarchive</button>
+                                <button (click)="navigateToEditNote(note)" class="edit-note-btn">
+                                    <div class="note-tag-icon">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                        <p class="button-text">Details</p>
+                                    </div>
+                                </button>
+                                
+                                <button (click)="archiveNote( note )" class="archive-btn" *ngIf="note.isArchived === false">
+                                    <div class="note-tag-icon">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <p class="button-text">Archive</p>
+                                    </div>
+                                </button>
+
+                                <button (click)="unarchiveNote( note)" class="unarchive-btn" *ngIf="note.isArchived === true">
+                                    <div class="note-tag-icon">
+                                        <i class="fa-solid fa-lock-open"></i>
+                                        <p class="button-text">Unarchive</p>
+                                    </div>
+                                </button>
                             </article>
                         </div>
                     </div>

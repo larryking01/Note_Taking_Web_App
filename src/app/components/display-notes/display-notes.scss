@@ -45,14 +45,32 @@
         transform: translateY(-2px);
       }
 
+      .note-title-icon {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .note-tag-icon {
+        display: flex;
+        justify-content: start;
+        gap: 0.5rem;
+      }
+
       .note-title {
         margin: 1rem 0 0.5rem;
         color: var(--font-color);
       }
 
+      .note-icon {
+         color: var(--icon-color);
+         align-self: center;
+         
+      }
+
       .note-date {
         color: #555;
         font-size: 0.9rem;
+        margin-bottom: 1rem;
       }
 
       .tags {
@@ -62,6 +80,8 @@
       .tag-img {
         width: 15px;
         margin-top: 1rem;
+        align-self: center;
+        color: var(--icon-color);
       }
 
       .note-content {
@@ -85,7 +105,7 @@
   }
 
   .edit-note-btn {
-    @include main-action-btn-style(5rem);
+    @include main-action-btn-style(6rem);
     margin-top: 2rem
   }
 
@@ -96,7 +116,7 @@
   }
 
   .unarchive-btn {
-    @include main-action-btn-style(6rem);
+    @include main-action-btn-style(6.3rem);
     margin-top: 2rem
   }
 

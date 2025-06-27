@@ -20,9 +20,15 @@
 .notes-content {
   padding: 2rem;
 
+  .update-note-tag-icon {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
 
   .delete-btn {
-    @include main-action-btn-style(10rem);
+    @include main-action-btn-style(3rem);
   }
 
   .archive-btn {
@@ -40,6 +46,11 @@
     // background-color: red;
     max-width: 70%;
     margin: 0 auto;
+
+
+    small {
+      color: red;
+    }
 
 
     .note-title {

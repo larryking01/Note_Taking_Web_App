@@ -9,10 +9,10 @@ $cancel-btn-hover-col: tomato;
 @mixin main-action-btn-style($btn-width) {
   background-color: var(--primary-col);
   color: #ffffff;
-  padding: 0.65rem 1.5rem;
+  padding: 0.65rem 0.5rem;
   width: $btn-width;
-  font-size: 1rem;
-  font-weight: 500;
+  // font-size: 1rem;
+  // font-weight: 200;
   border: none;
   border-radius: 6px;
   cursor: pointer;

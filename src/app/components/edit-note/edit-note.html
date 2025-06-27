@@ -7,9 +7,9 @@
 
         <section class="notes-content">
             <div div class="delete-archive-action-btns">
-                <button type="button" class="delete-btn" (click)="deleteNote()">Delete note</button>
-                <!-- <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button>
-                <button type="button" class="unarchive-btn" (click)="unarchiveNote()">Unarchive</button> -->
+                <button type="button" class="delete-btn" (click)="deleteNote()" title="Delete note">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
             </div>
 
             <form (ngSubmit)="updateNote()" [formGroup]="noteForm" class="note-form">
@@ -40,10 +40,19 @@
                 </select>
 
                 <article class="form-actions-article">
-                    <button type="submit" class="create-note-btn" aria-label="Update note">Update note</button>
-                    <button type="button" class="cancel-btn" aria-label="Cancel note update">Cancel</button>
-                    <!-- <button type="button" class="delete-btn" (click)="deleteNote()">Delete note</button>
-                    <button type="button" class="archive-btn" (click)="archiveNote()">Archive</button> -->
+                    <button type="submit" class="create-note-btn" aria-label="Update note">
+                        <div class="update-note-tag-icon">
+                            <i class="fa-solid fa-pen"></i>
+                            <p class="button-text">Update note</p>
+                        </div>
+                    </button>
+
+                    <button type="button" class="cancel-btn" aria-label="Cancel note update">
+                        <div class="update-note-tag-icon">
+                            <i class="fa-solid fa-ban"></i>
+                            <p class="button-text">Cancel</p>
+                        </div>
+                    </button>
                 </article>
             </form>
         </section>

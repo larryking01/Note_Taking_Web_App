@@ -5,6 +5,12 @@
     margin: 2rem auto;
     // background-color: red;
 
+    .update-note-tag-icon {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
     .auth-type-header {
         margin-top: 7rem;
         margin-bottom: 1rem;
@@ -52,8 +58,13 @@
 
 
             p {
-                color: blue;
+                color: var(--font-color);
                 cursor: pointer;
+                font-size: 0.8rem;
+
+                &:hover {
+                    color: #292966;
+                }
             }
         }
 

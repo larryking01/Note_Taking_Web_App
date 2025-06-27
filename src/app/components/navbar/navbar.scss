@@ -31,7 +31,13 @@
 
 
   button {
-    @include main-action-btn-style( 8rem);
+    @include main-action-btn-style(3rem);
+    color: var(--font-color);
+    color: #fff;
+  }
+
+  .sign-in-btn {
+    @include main-action-btn-style( 6rem);
     color: var(--font-color);
     color: #fff;
   }
