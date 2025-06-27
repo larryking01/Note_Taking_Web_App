@@ -10,6 +10,15 @@
   align-items: center;
   box-shadow: 0 1px 4px grey;
 
+  .hamburder-div {
+    cursor: pointer;
+  }
+
+
+  .hamburger-icon {
+    color: var(--font-color);
+  }
+
   .page-title {
     font-size: 1.2rem;
     font-weight: 600;

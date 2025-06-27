@@ -14,6 +14,12 @@
   position: sticky;
   top: 0;
 
+  .hide-sidebar-icon {
+    cursor: pointer;
+    // text-align: center;
+  }
+
+
   .logo {
     @include main-action-btn-style(100%);
     font-size: 1.4rem;
@@ -47,16 +53,12 @@
       justify-content: space-between;
     }
 
-
    .sidebar-section-title {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       gap: 0.5rem;
     }
-
-
-
 
   }
 
@@ -162,4 +164,23 @@
   }
 }
   
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+
+
+@media ( max-width: 600px ) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    // transition: left 1s ease;
+  }
+
 }

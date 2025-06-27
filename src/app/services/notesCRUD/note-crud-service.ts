@@ -24,23 +24,15 @@ export class NoteCrudService {
 
   totalArchivedNotes: WritableSignal<number> = signal(0)
 
-  // currentUserEmail: string | null | undefined = null;
+  showSidebar: boolean = true;
 
-  
+  setShowSidebarTrue() {
+    this.showSidebar = true
+  }
 
-
-
-
-  // authService = inject( AuthService )
-
-  // constructor( private authService: AuthService ) {
-  //   this.authService.users$.subscribe({
-  //     next: ( user ) => {
-  //       this.currentUserEmail = user?.email;
-  //     }
-  //   })
-
-  // }
+  setShowSidebarFalse() {
+    this.showSidebar = false
+  }
 
 
   async createNewNote( note: NoteInterface ) {

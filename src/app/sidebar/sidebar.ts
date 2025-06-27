@@ -25,6 +25,10 @@ export class Sidebar  {
     this.lightMode = !this.lightMode
   }
 
+  hideSidebar() {
+    this.notesService.setShowSidebarFalse()
+  }
+
   navigateToCreateNote() {
     this.router.navigate(['create'])
     

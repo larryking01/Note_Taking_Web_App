@@ -14,6 +14,7 @@
   --main-content-bg: #fff;
   --initial-black: #1c1f26;
   --font-color: black;
+  --note-border-left-col: #292966;
 }
 
 
@@ -21,7 +22,6 @@ body.dark {
   --primary-col: black;
   --icon-color: #fff;
   --affirm-btn-hover-col: #1c1f26;
-  // --affirm-btn-hover-col: #707070;
   --cancel-btn-bg: red;
   --cancel-btn-hover-col: tomato;
   --navbar-bg: #1c1f26 ;
@@ -30,6 +30,7 @@ body.dark {
   --main-content-bg: #121212;
   --btn-focus-outline: green;
   --font-color: #fff;
+  --note-border-left-col: #fff;
 }
 
 
@@ -45,18 +46,7 @@ body.green {
   --main-content-bg: #121212;
   --btn-focus-outline: green;
   --font-color: #fff;
-
-  // --primary-col: black;
-  // --affirm-btn-hover-col: #1c1f26;
-  // --cancel-btn-bg: red;
-  // --cancel-btn-hover-col: tomato;
-  // --navbar-bg: #1c1f26 ;
-  // --note-card-bg-work: black;
-  // --font-color: #fff;
-  // --main-content-bg: #121212;
-  // --btn-focus-outline: green;
-  // --font-color: #fff;
-
+  --note-border-left-col: #003e29;
 
 }
 

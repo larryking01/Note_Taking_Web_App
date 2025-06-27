@@ -1,7 +1,8 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../services/authentication/auth-service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 
 
 @Component({
@@ -11,12 +12,16 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.scss',
   // encapsulation: ViewEncapsulation.None
 })
-export class Navbar {
+export class Navbar implements OnInit {
   @Input() pageTitle: string = ''
 
   isLoggedIn: boolean = false
 
   currentUserEmail: string | null | undefined = null;
+
+  notesService = inject( NoteCrudService )
+
+  isSmallScreen: boolean = false;
 
 
   // authService = inject( AuthService )
@@ -30,6 +35,30 @@ export class Navbar {
       }
     })
 
+  }
+
+
+  ngOnInit(): void {
+    this.checkScreenSize()
+    window.addEventListener('resize', this.checkScreenSize.bind( this ))
+  }
+
+
+  checkScreenSize() {
+    console.log( window.innerWidth <= 600 )
+    this.isSmallScreen = window.innerWidth <= 600
+    if( this.isSmallScreen ) {
+      this.notesService.setShowSidebarFalse()
+    }
+    else {
+      this.notesService.setShowSidebarTrue()
+    }
+
+  }
+
+
+  showSidebar() {
+    this.notesService.setShowSidebarTrue()
   }
 
 
