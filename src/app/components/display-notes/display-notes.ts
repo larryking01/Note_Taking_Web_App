@@ -40,7 +40,9 @@ export class DisplayNotes implements OnInit {
     this.notesService.getUserNotesRealTime().subscribe({
       next: ( data => { 
         this.AllNotesArray = data
+        this.notesService.totalNotes.set( this.AllNotesArray.length )
         this.filterNotes()
+        this.filterNotesOnArchiveStatus()
        })
     })
   }
@@ -66,16 +68,24 @@ export class DisplayNotes implements OnInit {
   }
 
 
+  filterNotesOnArchiveStatus(): void {
+    this.filteredNotes = this.AllNotesArray.filter( note => note.isArchived === false )
+    this.notesService.totalArchivedNotes.set( this.AllNotesArray.length - this.filteredNotes.length )
+  }
+
+
   archiveNote( note: NoteInterface ): void {
     this.selectedNoteID = note.id
     this.notesService.toggleArchive(this.selectedNoteID)
       .then(() => {
         this.toastService.handleSuccess("Note added to archives")
+        this.filterNotesOnArchiveStatus()
       })
       .catch(err => {
         this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
       });
   }
+
 
   unarchiveNote( note: NoteInterface ): void {
     this.selectedNoteID = note.id
@@ -87,7 +97,5 @@ export class DisplayNotes implements OnInit {
         this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
       });
   }
-
-
 
 }

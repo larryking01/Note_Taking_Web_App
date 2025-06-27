@@ -61,6 +61,12 @@
         color: var(--font-color);
       }
 
+      .note-tag {
+        margin: 1rem 0 0.5rem;
+        color: var(--font-color);
+        font-style: italic;
+      }
+
       .note-icon {
          color: var(--icon-color);
          align-self: center;

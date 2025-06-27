@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NoteCrudService } from '../services/notesCRUD/note-crud-service';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,6 +18,8 @@ export class Sidebar  {
   themeType: string = '';
 
   lightMode: boolean = true;
+
+  notesService = inject( NoteCrudService )
 
   toggleTheme() {
     this.lightMode = !this.lightMode

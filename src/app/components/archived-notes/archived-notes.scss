@@ -51,11 +51,29 @@
       }
 
       .note-tag {
-        display: block;
-        margin-top: 0.75rem;
-        color: #888;
-        font-size: 0.75rem;
+        margin: 1rem 0 0.5rem;
+        color: var(--font-color);
+        font-style: italic;
       }
+
+      .note-tag-icon {
+        display: flex;
+        justify-content: start;
+        gap: 0.5rem;
+      }
+
+      .tag-img {
+        width: 15px;
+        margin-top: 1rem;
+        align-self: center;
+        color: var(--icon-color);
+      }
+
+      .unarchive-btn {
+        @include main-action-btn-style(6.3rem);
+        margin-top: 2rem
+      }
+      
     }
   }
 

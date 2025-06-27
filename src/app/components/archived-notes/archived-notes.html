@@ -14,8 +14,21 @@
             <div *ngFor="let note of notes" class="note-card">
               <h3 class="note-title">{{ note.title }}</h3>
               <p class="note-content">{{ note.content }}</p>
-              <small class="note-tag">{{ note.tag }}</small>
+
+              <div class="note-tag-icon">
+                  <i class="fa-solid fa-tag tag-img"></i>
+                  <p class="note-tag">{{ note.tag }}</p>
+                  <!-- <p>isArchived: {{ note.isArchived }}</p> -->
+              </div>
+
+              <button (click)="unarchiveNote(note)" class="unarchive-btn" *ngIf="note.isArchived === true">
+                  <div class="note-tag-icon">
+                      <i class="fa-solid fa-lock-open"></i>
+                      <p class="button-text">Unarchive</p>
+                  </div>
+              </button>
             </div>
+
           </div>
         </div>
 
