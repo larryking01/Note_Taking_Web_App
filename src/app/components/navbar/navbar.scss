@@ -3,7 +3,7 @@
 
 /* Navbar */
 .navbar {
-  // background-color: var(--navbar-bg);
+  background-color: var(--navbar-bg);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -25,9 +25,15 @@
     }
   }
 
+  span {
+    color: var(--font-color);
+  }
+
 
   button {
     @include main-action-btn-style( 8rem);
+    color: var(--font-color);
+    color: #fff;
   }
 
   

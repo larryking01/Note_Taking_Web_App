@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })
-export class Sidebar implements OnInit {
+export class Sidebar  {
 
   router = inject( Router )
 
@@ -49,55 +49,45 @@ export class Sidebar implements OnInit {
   setFont(font: string) {
     this.fontType = font
     console.log('font type = ', this.fontType)
-    document.body.classList.remove('serif', 'sans-serif', 'monospace')
+    document.body.classList.remove('sans', 'sans-serif', 'monospace')
+    localStorage.setItem("preferred-font", this.fontType)
+    console.log('saved font = ', localStorage.getItem('preferred-font'))
     document.body.classList.add( this.fontType )
-  }
-
-
-  ngOnInit(): void {
-    this.setFont( this.fontType )
-  }
-
-  // setFontSerif() {
-  //   this.fontType = 'serif'
-  //   console.log('font type = ', this.fontType)
-  //   document.body.classList.remove('serif', 'sans-serif', 'monospace')
-  //   document.body.classList.add( this.fontType )
-  // }
-
-
-
-  // setFontSansSerif() {
-  //   this.fontType = 'sans-serif'
-  //   console.log('font type = ', this.fontType)
-  //   document.body.classList.remove('serif', 'sans-serif', 'monospace')
-  //   document.body.classList.add( this.fontType )
-  // }
-
-  // setFontMonospace() {
-  //   this.fontType = 'monospace'
-  //   console.log('font type = ', this.fontType)
-  //   document.body.classList.remove('serif', 'sans-serif', 'monospace')
-  //   document.body.classList.add( this.fontType )
-  // }
-
-
-  setThemeDark() {
-    this.toggleTheme()
-    this.themeType = 'dark'
-    document.body.classList.add('dark')
-    console.log( document.body.classList )
-
   }
 
 
   setThemeLight() {
     this.toggleTheme()
     this.themeType = 'light'
-    document.body.classList.remove('dark')
-    // document.body.classList.add('light')
+    document.body.classList.remove('dark', 'green')
+    localStorage.setItem('preferred-theme', '')
     
   }
+
+
+  setThemeDark() {
+    this.toggleTheme()
+    this.themeType = 'dark'
+    document.body.classList.remove('dark', 'green')
+    document.body.classList.add(this.themeType)
+    console.log( document.body.classList )
+    localStorage.setItem('preferred-theme', this.themeType)
+
+  }
+
+
+  setThemeGreen() {
+    this.toggleTheme()
+    this.themeType = 'green'
+    document.body.classList.remove('dark', 'green')
+    document.body.classList.add(this.themeType)
+    console.log( document.body.classList )
+    localStorage.setItem('preferred-theme', this.themeType)
+    
+  }
+
+
+
 
 
 

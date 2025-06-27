@@ -19,7 +19,14 @@
 /* Notes */
 .notes-content {
   padding: 2rem;
-  // background-color: var(--main-content-bg);
+  background-color: var(--main-content-bg);
+  height: 100vh;
+
+
+  .no-notes-text {
+    color: var(--font-color);
+  }
+
 
   .notes-grid {
     display: grid;
@@ -40,6 +47,7 @@
 
       .note-title {
         margin: 1rem 0 0.5rem;
+        color: var(--font-color);
       }
 
       .note-date {
@@ -58,6 +66,7 @@
 
       .note-content {
         margin-top: 1rem;
+        color: var(--font-color);
       }
 
       small {

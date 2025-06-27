@@ -6,7 +6,8 @@
 
         <div class="notes-content">
             <input type="text" placeholder="Search notes by title, tag or content.." 
-                   [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" class="search-input"/>
+                   [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" 
+                   class="search-input"/>
 
                 <article *ngIf="allNotes$ | async as notes; else loading">
                     <div *ngIf="notes.length > 0; else noNotes" class="notes-grid">
@@ -33,11 +34,11 @@
                 </article>
 
             <ng-template #loading>
-                <p>Loading notes...</p>
+                <p class="no-notes-text">Loading notes...</p>
             </ng-template>
 
             <ng-template #noNotes>
-                <p>No notes available yet..</p>
+                <p class="no-notes-text">No notes available yet..</p>
             </ng-template>
 
         </div>

@@ -2,7 +2,7 @@
 <aside class="sidebar">
   <main class="nav-main">
 
-    <button class="logo" routerLink="/" aria-label="See all notes">📝 Notes</button>
+    <button class="logo" routerLink="/" aria-label="See all notes">📝 Notedly</button>
 
     <nav aria-label="Main Navigation">
       <ul>
@@ -30,7 +30,7 @@
       <button class="monospace" (click)="setFontMonospace()">Monospace</button> -->
 
         <div class="font-selector">
-          <button [class.active]="fontType === 'serif'" (click)="setFont('serif')">Sans</button>
+          <button [class.active]="fontType === 'sans'" (click)="setFont('sans')">Sans</button>
           <button [class.active]="fontType === 'sans-serif'" (click)="setFont('sans-serif')">Serif</button>
           <button [class.active]="fontType === 'monospace'" (click)="setFont('monospace')">Mono</button>
         </div>
@@ -43,9 +43,9 @@
 
         <button class="dark-theme-btn" (click)="setThemeDark()"></button>
 
-        <button class="orange-theme-btn" (click)="setThemeDark()"></button>
+        <!-- <button class="orange-theme-btn" (click)="setThemeDark()"></button> -->
 
-        <button class="green-theme-btn" (click)="setThemeDark()"></button>
+        <button class="green-theme-btn" (click)="setThemeGreen()"></button>
       </div>
 
     </section>

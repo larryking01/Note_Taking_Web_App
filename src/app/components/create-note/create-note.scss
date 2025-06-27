@@ -18,6 +18,16 @@
 /* Notes */
 .notes-content {
   padding: 2rem;
+  background-color: var(--main-content-bg);
+  height: 100vh;
+
+  label {
+    color: var(--font-color);
+  }
+
+  small {
+    color: var(--font-color);
+  }
 
 
   .note-form {
