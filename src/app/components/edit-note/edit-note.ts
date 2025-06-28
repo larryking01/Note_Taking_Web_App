@@ -9,6 +9,7 @@ import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { CommonModule } from '@angular/common';
 import { ErrorService } from '../../services/errorService/error-service';
 import { ToastService } from '../../services/successToast/toast-service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-note',
@@ -21,6 +22,8 @@ export class EditNote implements OnInit, OnDestroy {
   activatedRoute = inject( ActivatedRoute )
 
   router = inject( Router )
+
+  location = inject( Location )
 
   errorService = inject( ErrorService )
 
@@ -67,7 +70,10 @@ export class EditNote implements OnInit, OnDestroy {
 
 
   updateNote(): void {
-    if (this.noteForm.invalid || !this.selectedNoteID) {
+    if( this.noteForm.pristine ) {
+      this.errorService.handleError("Note has not been edited yet...")
+    }
+    else if (this.noteForm.invalid || !this.selectedNoteID) {
       this.errorService.handleError("Hang on — a few required details are missing. You’re almost there!")
       return;
     }
@@ -82,7 +88,7 @@ export class EditNote implements OnInit, OnDestroy {
       .then(() => {
         console.log('Note updated successfully');
         this.toastService.handleSuccess("Note updated successfully.")
-        this.router.navigate(['/']);
+        this.router.navigate(['view-notes']);
       })
       .catch(err => {
         this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
@@ -100,12 +106,17 @@ export class EditNote implements OnInit, OnDestroy {
 
     this.noteService.deleteUserNote(this.selectedNoteID)
       .then(() => {
-        this.toastService.handleSuccess("Note updated successfully.")
-        this.router.navigate(['/']);
+        this.toastService.handleSuccess("Your note has been removed")
+        this.router.navigate(['view-notes']);
       })
       .catch(err => {
         this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
     });
+  }
+
+
+  goBack() {
+    this.location.back()
   }
 
 

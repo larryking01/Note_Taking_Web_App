@@ -5,8 +5,6 @@ import { Firestore, collection, addDoc, CollectionReference, getDoc,
          getDocs, collectionData, docData, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { Auth, authState } from '@angular/fire/auth';
 import { Observable, switchMap, of } from 'rxjs';
-import { AuthService } from '../authentication/auth-service';
-import { query } from 'firebase/firestore';
 
 
 
@@ -25,6 +23,16 @@ export class NoteCrudService {
   totalArchivedNotes: WritableSignal<number> = signal(0)
 
   showSidebar: boolean = true;
+
+  // showCloseSidebarBtn: boolean = false;
+
+  // setShowCloseSidebarBtn() {
+  //   this.showCloseSidebarBtn = true
+  // }
+
+  // setHideCloseSidebarBtn() {
+  //   this.showCloseSidebarBtn = false
+  // }
 
   setShowSidebarTrue() {
     this.showSidebar = true

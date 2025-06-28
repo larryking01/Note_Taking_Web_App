@@ -31,10 +31,19 @@
   }
 }
 
-// Fade out animation (optional if you dismiss it)
 @keyframes fadeOut {
   to {
     opacity: 0;
     transform: translate(-50%, -20px);
+  }
+}
+
+
+
+
+/* responsive rules */
+@media (max-width: 1023px) {
+  .error-banner {
+    width: 70%;
   }
 }

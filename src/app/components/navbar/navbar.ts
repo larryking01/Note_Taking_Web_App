@@ -45,8 +45,8 @@ export class Navbar implements OnInit {
 
 
   checkScreenSize() {
-    console.log( window.innerWidth <= 600 )
-    this.isSmallScreen = window.innerWidth <= 600
+    console.log( window.innerWidth <= 800 )
+    this.isSmallScreen = window.innerWidth <= 800
     if( this.isSmallScreen ) {
       this.notesService.setShowSidebarFalse()
     }
@@ -65,6 +65,7 @@ export class Navbar implements OnInit {
   signOutUser() {
     this.authService.signOut().then(() => {
       console.log('current user = ', this.isLoggedIn )
+      this.router.navigate(['/'])
     })
     .catch( err => {
       console.error( 'sign out error, ', err)
