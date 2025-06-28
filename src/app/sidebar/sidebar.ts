@@ -29,6 +29,10 @@ export class Sidebar  {
     this.notesService.setShowSidebarFalse()
   }
 
+  // showCloseSidebarBtn() {
+  //   return this.notesService.setShowCloseSidebarBtn()
+  // }
+
   navigateToCreateNote() {
     this.router.navigate(['create'])
     

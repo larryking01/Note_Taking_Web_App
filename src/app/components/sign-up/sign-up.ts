@@ -56,7 +56,7 @@ export class SignUp {
 
 
   navigateToHome() {
-    this.router.navigate(['/'])
+    this.router.navigate(['view-notes'])
   }
 
 

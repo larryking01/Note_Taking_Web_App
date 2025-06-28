@@ -4,7 +4,6 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAut
 import { Observable } from 'rxjs';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -46,20 +45,6 @@ export class AuthService {
   getCurrentUser(): User | null {
     return this.auth.currentUser
   }
-
-
-  /* get the currently logged in user's email */
-  // getUserEmail(): Observable<string | null> {
-  //   return new Observable(observer => {
-  //     this.userEmail$.subscribe(user => {
-  //       observer.next(user?.email ?? null);
-  //     });
-  //   });
-  // }
-
-
-
-
 
 
 }

@@ -76,3 +76,26 @@
 
     }
 }
+
+
+
+
+/* mobile responsive rules */
+@media ( max-width: 600px ) {
+    .sign-up-container {
+        max-width: 80%;
+        margin-top: 40%;
+    }
+
+}
+
+
+
+/* tablet responsive rules */
+@media ( min-width: 601px ) and (max-width: 1023px) {
+    .sign-up-container {
+        max-width: 60%;
+        margin-top: 30%;
+    }
+
+}

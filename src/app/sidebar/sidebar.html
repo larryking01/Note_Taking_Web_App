@@ -1,14 +1,14 @@
   <!-- Sidebar -->
 <aside [ngClass]="{'sidebar': notesService.showSidebar === true, 'hidden': notesService.showSidebar === false }">
   <main class="nav-main">
-        
+  
     <i class="fa-solid fa-xmark hide-sidebar-icon" (click)="hideSidebar()" *ngIf="notesService.showSidebar === true"></i>    
 
-    <button class="logo" routerLink="/" aria-label="See all notes">📝 Notedly</button>
+    <button class="logo" routerLink="/view-notes" aria-label="See all notes">📝 Notopia</button>
 
     <nav aria-label="Main Navigation">
       <ul>
-        <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
+        <li routerLink="/view-notes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
             tabindex="0" role="button" (keydown)="handleKeyDown($event, '/')" aria-label="View all notes">
           <div class="sidebar-section">
             <div class="sidebar-section-title">

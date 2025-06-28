@@ -9,6 +9,7 @@ import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { Router } from '@angular/router';
 import { ErrorService } from '../../services/errorService/error-service';
 import { ToastService } from '../../services/successToast/toast-service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class CreateNote {
 
   constructor( private authService: AuthService, private router: Router, 
                private noteCrudService: NoteCrudService, private errorService: ErrorService,
-               private toastService: ToastService ) {
+               private toastService: ToastService,
+              private location: Location ) {
     this.authService.users$.subscribe({
       next: ( user ) => {
         this.currentUserEmail = user?.email;
@@ -38,6 +40,11 @@ export class CreateNote {
     noteContent: new FormControl('', Validators.required),
     noteTag: new FormControl('', Validators.required)
   })
+
+
+  goBack() {
+    this.location.back()
+  }
 
 
 

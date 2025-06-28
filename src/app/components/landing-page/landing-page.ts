@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
-  selector: 'app-not-found',
+  selector: 'app-landing-page',
   imports: [RouterModule],
-  templateUrl: './not-found.html',
-  styleUrl: './not-found.scss'
+  templateUrl: './landing-page.html',
+  styleUrl: './landing-page.scss'
 })
-export class NotFound {
+export class LandingPage {
 
 }
