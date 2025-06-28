@@ -1,12 +1,14 @@
 export const environment = {
     production: true,
     firebaseConfig: {
-        apiKey: "AIzaSyCCO3n-YmdpdUCTfnCZSOS3uXDRo9VuJqU",
-        authDomain: "angular-note-taking-web-app.firebaseapp.com",
-        projectId: "angular-note-taking-web-app",
-        storageBucket: "angular-note-taking-web-app.firebasestorage.app",
-        messagingSenderId: "586686168480",
-        appId: "1:586686168480:web:b47473788f78aad80bf8c5"
-
+        apiKey: process.env['NG_APP_FIREBASE_API_KEY'],
+        authDomain: process.env['NG_APP_FIREBASE_AUTH_DOMAIN'],
+        projectId: process.env['NG_APP_FIREBASE_PROJECT_ID'],
+        storageBucket: process.env['NG_APP_FIREBASE_STORAGE_BUCKET'],
+        messagingSenderId: process.env['NG_APP_FIREBASE_MESSAGING_SENDER_ID'],
+        appId: process.env['NG_APP_FIREBASE_APP_ID'],
     }
 }
+
+
+
