@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { NoteInterface } from '../../models/noteInterface';
 import { Navbar } from "../navbar/navbar";
-import { Sidebar } from '../../sidebar/sidebar';
+import { Sidebar } from '../sidebar/sidebar';
 import { AuthService } from '../../services/authentication/auth-service';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { Router } from '@angular/router';
@@ -25,7 +25,8 @@ export class CreateNote {
   constructor( private authService: AuthService, private router: Router, 
                private noteCrudService: NoteCrudService, private errorService: ErrorService,
                private toastService: ToastService,
-              private location: Location ) {
+               private location: Location ) 
+  {
     this.authService.users$.subscribe({
       next: ( user ) => {
         this.currentUserEmail = user?.email;

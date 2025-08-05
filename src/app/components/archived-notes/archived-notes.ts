@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Sidebar } from '../../sidebar/sidebar';
+import { Sidebar } from '../sidebar/sidebar';
 import { Navbar } from '../navbar/navbar';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { NoteInterface } from '../../models/noteInterface';

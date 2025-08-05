@@ -1,7 +1,8 @@
 export enum noteTag {
     personal = 'Personal',
     career = 'Career',
-    work = 'Work'
+    work = 'Work',
+    academic = 'Academic'
 }
 
 

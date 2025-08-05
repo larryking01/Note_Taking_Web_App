@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { NoteInterface } from '../../models/noteInterface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Sidebar } from "../../sidebar/sidebar";
+import { Sidebar } from "../sidebar/sidebar";
 import { FormsModule } from '@angular/forms';
 import { ToastService } from '../../services/successToast/toast-service';
 import { ErrorService } from '../../services/errorService/error-service';
@@ -47,6 +47,7 @@ export class DisplayNotes implements OnInit {
     })
   }
 
+
   
   navigateToEditNote(note: NoteInterface) {
     // this.router.navigate(['edit-note'])
@@ -58,7 +59,6 @@ export class DisplayNotes implements OnInit {
 
   filterNotes(): void {
     const query = this.searchQuery.toLocaleLowerCase()
-
     this.filteredNotes = this.AllNotesArray.filter( note => 
       note.title.toLowerCase().includes( query ) ||
       note.content.toLowerCase().includes( query ) ||

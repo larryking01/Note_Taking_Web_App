@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { Navbar } from '../navbar/navbar';
-import { Sidebar } from '../../sidebar/sidebar';
+import { Sidebar } from '../sidebar/sidebar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
