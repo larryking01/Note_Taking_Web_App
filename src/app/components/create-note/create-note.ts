@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NoteInterface } from '../../models/noteInterface';
@@ -22,11 +22,15 @@ export class CreateNote {
 
   currentUserEmail: string | null | undefined = null;
 
-  constructor( private authService: AuthService, private router: Router, 
-               private noteCrudService: NoteCrudService, private errorService: ErrorService,
-               private toastService: ToastService,
-               private location: Location ) 
-  {
+  private authService = inject(AuthService)
+  private noteCrudService = inject(NoteCrudService)
+  private errorService = inject(ErrorService)
+  private toastService = inject(ToastService)
+  private location = inject(Location)
+  private router = inject(Router)
+  
+
+  constructor( ) {
     this.authService.users$.subscribe({
       next: ( user ) => {
         this.currentUserEmail = user?.email;
@@ -71,7 +75,6 @@ export class CreateNote {
     }
 
   }
-
 
 
 }
