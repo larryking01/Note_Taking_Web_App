@@ -40,6 +40,7 @@ export class DisplayNotes implements OnInit {
     this.notesService.getUserNotesRealTime().subscribe({
       next: ( data => { 
         this.AllNotesArray = data
+        console.log( this.AllNotesArray)
         this.notesService.totalNotes.set( this.AllNotesArray.length )
         this.filterNotes()
         this.filterNotesOnArchiveStatus()

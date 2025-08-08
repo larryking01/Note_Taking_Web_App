@@ -4,10 +4,19 @@
   
     <i class="fa-solid fa-xmark hide-sidebar-icon" (click)="hideSidebar()" *ngIf="notesService.showSidebar === true"></i>    
 
-    <button class="logo" routerLink="/view-notes" aria-label="See all notes">📝 Notopia</button>
+    <button class="logo" aria-label="See all notes">📝 Notopia</button>
 
     <nav aria-label="Main Navigation">
       <ul>
+        <li routerLink="/create" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/create')" aria-label="Create new note">
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">
+              <i class="fa-solid fa-square-pen note-icon"></i>    
+              <p>Create Note</p>
+            </div>
+          </div>
+        </li>
+
         <li routerLink="/view-notes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" 
             tabindex="0" role="button" (keydown)="handleKeyDown($event, '/')" aria-label="View all notes">
           <div class="sidebar-section">
@@ -22,18 +31,6 @@
           </div>
         </li>
 
-        <li routerLink="/create" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/create')" aria-label="Create new note">
-          <div class="sidebar-section">
-            <div class="sidebar-section-title">
-              <i class="fa-solid fa-square-pen note-icon"></i>    
-              <p>Create Note</p>
-            </div>
-
-            <!-- <p>
-              count
-            </p> -->
-          </div>
-        </li>
 
         <li routerLink="/archived" routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/archived')" aria-label="View archived notes">
           <div class="sidebar-section">
@@ -53,7 +50,7 @@
   </main>
 
   <article class="themes">
-    <h3>Preferences</h3>
+    <h3>My Preferences</h3>
     <section class="fonts">
       <h3>Fonts:</h3>
         <div class="font-selector">
