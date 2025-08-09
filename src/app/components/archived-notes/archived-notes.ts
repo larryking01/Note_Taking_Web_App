@@ -6,18 +6,18 @@ import { NoteInterface } from '../../models/noteInterface';
 import { ToastService } from '../../services/successToast/toast-service';
 import { ErrorService } from '../../services/errorService/error-service';
 import { Observable, map } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; 
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-archived-notes',
-  imports: [Sidebar, Navbar, CommonModule],
+  imports: [Sidebar, Navbar, CommonModule, FormsModule],
   templateUrl: './archived-notes.html',
   styleUrl: './archived-notes.scss'
 })
 export class ArchivedNotes implements OnInit {
-  archivedNotes$!: Observable<NoteInterface[]>;
-
+  // archivedNotes$!: Observable<NoteInterface[]>;
 
   noteService = inject( NoteCrudService )
 
@@ -27,11 +27,25 @@ export class ArchivedNotes implements OnInit {
 
   selectedNoteID: string = ''
 
+  ArchivedNotesArray: NoteInterface[] = []
+  filteredNotes: NoteInterface[] = []
+
+  searchQuery: string = '';
+
 
   ngOnInit(): void {
-    this.archivedNotes$ = this.noteService.getUserNotesRealTime().pipe(
+    this.noteService.getUserNotesRealTime().pipe(
       map(notes => notes.filter(note => note.isArchived))
-    );
+    )
+    .subscribe({
+      next: ( archivedNotes ) => {
+        this.ArchivedNotesArray = archivedNotes
+        this.filteredNotes = archivedNotes
+      }
+    })
+    
+    
+    ;
   }
 
 
@@ -44,6 +58,17 @@ export class ArchivedNotes implements OnInit {
       .catch(err => {
         this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")
       });
+  }
+
+
+  filterNotes(): void {
+    const query = this.searchQuery.toLocaleLowerCase()
+    this.filteredNotes = this.ArchivedNotesArray.filter( note => 
+      note.title.toLowerCase().includes( query ) ||
+      note.content.toLowerCase().includes( query ) ||
+      note.tag.toLocaleLowerCase().includes( query )
+    )
+
   }
 
 

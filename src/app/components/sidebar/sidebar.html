@@ -1,8 +1,8 @@
   <!-- Sidebar -->
-<aside [ngClass]="{'sidebar': notesService.showSidebar === true, 'hidden': notesService.showSidebar === false }">
+<aside [ngClass]="{'sidebar': sidebarService.showSidebar === true, 'hidden': sidebarService.showSidebar === false }">
   <main class="nav-main">
   
-    <i class="fa-solid fa-xmark hide-sidebar-icon" (click)="hideSidebar()" *ngIf="notesService.showSidebar === true"></i>    
+    <i class="fa-solid fa-xmark hide-sidebar-icon" (click)="hideSidebar()" *ngIf="sidebarService.showSidebar === true"></i>    
 
     <button class="logo" aria-label="See all notes">📝 Notopia</button>
 
@@ -22,12 +22,10 @@
           <div class="sidebar-section">
             <div class="sidebar-section-title">
                 <i class="fa-solid fa-note-sticky"></i>             
-                <p>Total Notes</p>
+                <p>Active Notes</p>
             </div>
 
-            <p>
-              {{ notesService.totalNotes() }}
-            </p>
+            <p>{{ activeNotesCount }}</p>
           </div>
         </li>
 
@@ -39,11 +37,22 @@
               <p>Archived</p>
             </div>
 
-            <p>
-              {{ notesService.totalArchivedNotes() }}
-            </p>
+            <p>{{ archivedNotesCount }}</p>
           </div>
         </li>
+
+
+        <!-- <li routerLinkActive="active" tabindex="0" role="button" (keydown)="handleKeyDown($event, '/archived')" aria-label="View archived notes">
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">
+              <i class="fa-solid fa-lock"></i>    
+              <p>All Notes</p>
+            </div>
+
+            <p>{{ totalNotesCount }}</p>
+          </div>
+        </li> -->
+        
       </ul>
     </nav>
 

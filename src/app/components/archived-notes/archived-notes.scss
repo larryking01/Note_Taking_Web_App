@@ -84,6 +84,20 @@
   }
 }
 
+
+.search-input {
+    width: 100%;
+    // max-width: 400px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;  
+    @include focus-visible-style();
+
+  }
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .sidebar {

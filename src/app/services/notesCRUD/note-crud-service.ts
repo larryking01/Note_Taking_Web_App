@@ -18,29 +18,8 @@ export class NoteCrudService {
   private firestore = inject( Firestore )
   private auth = inject( Auth )
 
-  totalNotes: WritableSignal<number> = signal(0)
-
+  // totalNotes: WritableSignal<number> = signal(0)
   totalArchivedNotes: WritableSignal<number> = signal(0)
-
-  showSidebar: boolean = true;
-
-  // showCloseSidebarBtn: boolean = false;
-
-  // setShowCloseSidebarBtn() {
-  //   this.showCloseSidebarBtn = true
-  // }
-
-  // setHideCloseSidebarBtn() {
-  //   this.showCloseSidebarBtn = false
-  // }
-
-  setShowSidebarTrue() {
-    this.showSidebar = true
-  }
-
-  setShowSidebarFalse() {
-    this.showSidebar = false
-  }
 
 
   async createNewNote( note: NoteInterface ) {

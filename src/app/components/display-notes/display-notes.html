@@ -5,12 +5,12 @@
         <app-navbar [pageTitle]="'My Notes'" />
 
         <div class="notes-content">
-            <input type="text" placeholder="Search notes by title, tag or content.." 
+            <input type="text" placeholder="Search active notes by title, tag or content.." 
                    [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" 
                    class="search-input"/>
 
-                <article *ngIf="allNotes$ | async as notes; else loading">
-                    <div *ngIf="notes.length > 0; else noNotes" class="notes-grid">
+                <article *ngIf="filteredNotes.length > 0; else loading">
+                    <div *ngIf="filteredNotes.length > 0; else noNotes" class="notes-grid">
                         <div *ngFor="let note of filteredNotes" class="note-card" 
                               [ngClass]="{
                                 'work_tag_bg': note.tag==='Work',

@@ -2,8 +2,7 @@ import { Component, Input, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/authentication/auth-service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
-
+import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsiveness';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +18,7 @@ export class Navbar implements OnInit {
 
   currentUserEmail: string | null | undefined = null;
 
-  notesService = inject( NoteCrudService )
+  sidebarService = inject( SidebarResponsiveness )
 
   isSmallScreen: boolean = false;
 
@@ -48,17 +47,17 @@ export class Navbar implements OnInit {
     console.log( window.innerWidth <= 800 )
     this.isSmallScreen = window.innerWidth <= 800
     if( this.isSmallScreen ) {
-      this.notesService.setShowSidebarFalse()
+      this.sidebarService.setShowSidebarFalse()
     }
     else {
-      this.notesService.setShowSidebarTrue()
+      this.sidebarService.setShowSidebarTrue()
     }
 
   }
 
 
   showSidebar() {
-    this.notesService.setShowSidebarTrue()
+    this.sidebarService.setShowSidebarTrue()
   }
 
 

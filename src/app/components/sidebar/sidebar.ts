@@ -1,7 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsiveness';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
+import { map } from 'rxjs'
+
 
 @Component({
   selector: 'app-sidebar',
@@ -9,24 +12,67 @@ import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })
-export class Sidebar  {
+export class Sidebar  implements OnInit {
 
-  router = inject( Router )
 
   fontType: string = 'sans';
-  
   themeType: string = '';
-
   lightMode: boolean = true;
 
-  notesService = inject( NoteCrudService )
+  totalNotesCount = 0
+  activeNotesCount = 0
+  archivedNotesCount = 0
+
+  router = inject( Router )
+  sidebarService = inject( SidebarResponsiveness )
+  noteCRUDService = inject( NoteCrudService )
+
+  ngOnInit(): void {
+    this.getTotalUserNotesCount()
+    this.getTotalActiveNotesCount()
+    this.getTotalArchivedNotes()
+    this.archivedNotesCount = this.noteCRUDService.totalArchivedNotes()
+  }
+
+
+  getTotalUserNotesCount() {
+    this.noteCRUDService.getUserNotesRealTime().subscribe({
+      next: ( data ) => {
+        this.totalNotesCount = data.length
+      }
+    })
+  }
+
+
+  getTotalActiveNotesCount() {
+    this.noteCRUDService.getUserNotesRealTime().pipe(
+      map( notes => notes.filter( note => note.isArchived === false ))
+    )
+    .subscribe({
+      next: ( data ) => {
+        this.activeNotesCount = data.length
+      }
+    })
+  }
+
+
+  getTotalArchivedNotes() {
+    this.noteCRUDService.getUserNotesRealTime().pipe(
+      map( notes => notes.filter( note => note.isArchived === true ))
+    )
+    .subscribe({
+      next: ( data ) => {
+        this.archivedNotesCount = data.length
+      }
+    })
+  }
 
   toggleTheme() {
     this.lightMode = !this.lightMode
   }
 
   hideSidebar() {
-    this.notesService.setShowSidebarFalse()
+    this.sidebarService.setShowSidebarFalse()
   }
 
   // showCloseSidebarBtn() {

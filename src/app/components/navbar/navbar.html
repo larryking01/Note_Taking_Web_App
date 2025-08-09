@@ -1,6 +1,6 @@
 <header class="navbar">
     <div class="hamburder-div" *ngIf="isSmallScreen">
-        <i class="fa-solid fa-bars hamburger-icon" (click)="showSidebar()" *ngIf="notesService.showSidebar === false"></i>
+        <i class="fa-solid fa-bars hamburger-icon" (click)="showSidebar()" *ngIf="sidebarService.showSidebar === false"></i>
     </div>
 
     <span class="page-title" (click)="navigateToHome()">{{ pageTitle }}</span>
