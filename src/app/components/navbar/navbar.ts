@@ -1,4 +1,4 @@
-import { Component, Input, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/authentication/auth-service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
