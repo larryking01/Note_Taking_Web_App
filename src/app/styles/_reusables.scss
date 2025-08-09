@@ -1,5 +1,6 @@
 /* variables */
-$primary-col: #1c1f26;
+// $primary-col: #1c1f26;
+// $primary-col: #fff;
 $affirm-btn-hover-col: #707070;
 $cancel-btn-hover-col: tomato;
 
@@ -7,8 +8,8 @@ $cancel-btn-hover-col: tomato;
 
 
 @mixin main-action-btn-style($btn-width) {
-  background-color: var(--primary-col);
-  color: #ffffff;
+  background-color: var(--action-btn-bg-col);
+  color: var(--action-btn-col);
   padding: 0.65rem 0.5rem;
   width: $btn-width;
   // font-size: 1rem;

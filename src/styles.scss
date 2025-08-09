@@ -1,17 +1,28 @@
 @use './app/styles/_resets' as *;
 
 
+
+
 /* themes */
 :root {
-  --primary-col: #292966;
+  --sidebar-bg-col: #fff;
+  --navbar-bg-col: #fff;
+  --logo-btn-col: #292966;
+  --logo-btn-bg-col: #fff;
+  --sidebar-section-col: #292966;
+  --sidebar-section-hover-bg-col: #5C5C99;
+  --preferences-text-col: #292966;
+  --action-btn-bg-col: #5C5C99;
+  --action-btn-col: #fff;
+
+
   --icon-color: #292966;
   --affirm-btn-hover-col: #5C5C99;
-  --navbar-bg: #f0f0f0;
   --note-card-bg-work: #F0F0F0;
   --btn-focus-outline: #A3A3CC;
   --cancel-btn-bg: red;
   --cancel-btn-hover-col: tomato;
-  --main-content-bg: #fff;
+  --main-content-bg: #f0f0f0;
   --initial-black: #1c1f26;
   --font-color: black;
   --note-border-left-col: #292966;

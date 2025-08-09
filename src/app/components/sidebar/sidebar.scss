@@ -4,7 +4,7 @@
 .sidebar {
   width: 240px;
   height: 100vh;
-  background-color: var(--primary-col);
+  background-color: var(--sidebar-bg-col);
   color: white;
   padding: 1.5rem 1rem;
   display: flex;
@@ -21,9 +21,17 @@
 
 
   .logo {
-    @include main-action-btn-style(100%);
     font-size: 1.4rem;
     font-weight: bold;
+    background-color: var(--logo-btn-bg-col);
+    color: var(--logo-btn-col);
+    padding: 0.65rem 0.5rem;
+    width: 100%;
+    // font-size: 1rem;
+    // font-weight: 200;
+    border: none;
+    border-radius: 6px;
+    // transition: background-color 0.3s ease, transform 0.2s ease;
 
   }
 
@@ -36,10 +44,12 @@
       margin-bottom: 0.5rem;
       cursor: pointer;
       border-radius: 4px;
+      color: var(--sidebar-section-col);
 
       &.active,
       &:hover {
-        background-color: var(--affirm-btn-hover-col);
+        background-color: var(--sidebar-section-hover-bg-col);
+        color: var(--sidebar-section-hover-col)
       }
 
       @include focus-visible-style();
@@ -62,10 +72,19 @@
 
   }
 
+  .themes {
+    .fonts {
+      margin-bottom: 3rem;
+    }
 
-  .fonts {
-    margin-bottom: 3rem;
+    h3 {
+      color: var(--preferences-text-col);
+      margin-bottom: 1rem;
+    }
+
+
   }
+
 
 
   .colors {
