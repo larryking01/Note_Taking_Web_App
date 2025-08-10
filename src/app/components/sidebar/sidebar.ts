@@ -1,49 +1,82 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsiveness';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
+import { ThemeService } from '../../services/themes/theme-service';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [ RouterModule, CommonModule ],
+  imports: [ RouterModule, CommonModule, FormsModule ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })
-export class Sidebar  {
+export class Sidebar  implements OnInit {
 
-  router = inject( Router )
-
-  fontType: string = 'sans';
-  
-  themeType: string = '';
-
+  fontType: string | null = null;
+  themeType: string = '';   
   lightMode: boolean = true;
 
-  notesService = inject( NoteCrudService )
+  isSmallScreen: boolean = false;
+
+  totalNotesCount = 0
+  activeNotesCount = 0
+  archivedNotesCount = 0
+
+  router = inject( Router )
+  sidebarService = inject( SidebarResponsiveness )
+  noteCRUDService = inject( NoteCrudService )
+  themeService = inject( ThemeService )
+
+  ngOnInit(): void {
+    window.addEventListener('resize', this.checkScreenSize.bind(this))
+    this.checkScreenSize()
+    this.calculateNoteStatistics()
+    this.initializeFontType()
+  }
+
+
+  calculateNoteStatistics() {
+    this.noteCRUDService.getTotalNotesCount()
+    this.noteCRUDService.getTotalActiveNotesCount()
+    this.noteCRUDService.getTotalArchivedNotesCount()
+
+    combineLatest([
+      this.noteCRUDService.totalNotesCount$,
+      this.noteCRUDService.totalActiveNotesCount$,
+      this.noteCRUDService.totalArchivedNotesCount$
+    ])
+    .subscribe({
+      next: ([ totalNotes, totalActiveNotes, totalArchivedNotes]) => {
+        this.totalNotesCount = totalNotes
+        this.activeNotesCount = totalActiveNotes,
+        this.archivedNotesCount = totalArchivedNotes
+      }
+    })
+
+  }
+
+
+  initializeFontType() {
+    const currentFont = this.themeService.getSavedFont()
+    if( currentFont ) {
+      this.fontType = currentFont
+    }
+    else {
+      this.fontType = 'sans'
+    }
+
+  }
+
 
   toggleTheme() {
     this.lightMode = !this.lightMode
   }
 
   hideSidebar() {
-    this.notesService.setShowSidebarFalse()
-  }
-
-  // showCloseSidebarBtn() {
-  //   return this.notesService.setShowCloseSidebarBtn()
-  // }
-
-  navigateToCreateNote() {
-    this.router.navigate(['create'])
-    
-  }
-
-  navigateToHome() {
-    this.router.navigate(['/'])
-  }
-
-  navigateToArchived() {
-    this.router.navigate(['archived'])
+    this.sidebarService.setShowSidebarFalse()
   }
 
   handleKeyDown(event: KeyboardEvent, route: string) {
@@ -57,14 +90,20 @@ export class Sidebar  {
     this.router.navigate([ route ])
   }
 
-  setFont(font: string) {
-    this.fontType = font
-    console.log('font type = ', this.fontType)
-    document.body.classList.remove('sans', 'sans-serif', 'monospace')
-    localStorage.setItem("preferred-font", this.fontType)
-    console.log('saved font = ', localStorage.getItem('preferred-font'))
-    document.body.classList.add( this.fontType )
+  checkScreenSize() {
+    console.log( "screen width =", window.innerWidth )
+    this.isSmallScreen = window.innerWidth <= 800
+    console.log("small screen = ", this.isSmallScreen)
+    if( this.isSmallScreen ) {
+      this.sidebarService.setShowSidebarFalse()
+    }
+    else {
+      this.sidebarService.setShowSidebarTrue()
+    }
+
   }
+  
+
 
 
   setThemeLight() {
@@ -97,5 +136,40 @@ export class Sidebar  {
     
   }
 
+
+  setPreferredFont(font: string) {
+    this.themeService.setFont(font)
+  }
+
+
+
+  // calculateTotalNotes() {
+  //   this.noteCRUDService.getTotalNotesCount()
+  //   this.noteCRUDService.totalNotesCount$.subscribe({
+  //     next: ( totalNotes ) => {
+  //       this.totalNotesCount = totalNotes
+  //     }
+  //   })
+  // }
+
+
+  // calculateTotalActiveNotes() {
+  //   this.noteCRUDService.getTotalActiveNotesCount()
+  //   this.noteCRUDService.totalActiveNotesCount$.subscribe({
+  //     next: ( totalActiveNotes ) => {
+  //       this.activeNotesCount = totalActiveNotes
+  //     }
+  //   })
+  // }
+
+
+  // calculateTotalArchivedNotes() {
+  //   this.noteCRUDService.getTotalArchivedNotesCount()
+  //   this.noteCRUDService.totalArchivedNotesCount$.subscribe({
+  //     next: ( totalArchivedNotes ) => {
+  //       this.archivedNotesCount = totalArchivedNotes
+  //     }
+  //   })
+  // }
 
 }

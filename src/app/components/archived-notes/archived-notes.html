@@ -4,14 +4,18 @@
 
   <!-- Main Area -->
   <div class="main">
-    <app-navbar [pageTitle]="'Archived notes'"></app-navbar>
+    <app-navbar [pageTitle]="'Resting in the archives'"></app-navbar>
 
     <!-- Notes Content -->
     <section class="notes-content">
       <div>
-        <div *ngIf="archivedNotes$ | async as notes">
-          <div *ngIf="notes.length; else noArchived" class="notes-grid">
-            <div *ngFor="let note of notes" class="note-card">
+      <input type="text" placeholder="Search archived notes by title, tag or content.." 
+              [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" 
+              class="search-input"/>
+
+        <div *ngIf="ArchivedNotesArray.length > 0">
+          <div *ngIf="filteredNotes.length; else noArchived" class="notes-grid">
+            <div *ngFor="let note of filteredNotes" class="note-card">
               <h3 class="note-title">{{ note.title }}</h3>
               <p class="note-content">{{ note.content }}</p>
 

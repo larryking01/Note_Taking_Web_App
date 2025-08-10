@@ -6,7 +6,7 @@
   height: 100vh;
   background-color: var(--sidebar-bg-col);
   color: white;
-  padding: 1.5rem 1rem;
+  padding: 0.3rem 1rem 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,26 +14,39 @@
   position: sticky;
   top: 0;
 
+  
   .hide-sidebar-icon {
     cursor: pointer;
-    // text-align: center;
   }
 
-
-  .logo {
-    font-size: 1.4rem;
-    font-weight: bold;
-    background-color: var(--logo-btn-bg-col);
+  .title-and-close-section {
+    display: flex;
+    justify-content: space-between;
     color: var(--logo-btn-col);
-    padding: 0.65rem 0.5rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
     width: 100%;
-    // font-size: 1rem;
-    // font-weight: 200;
-    border: none;
-    border-radius: 6px;
-    // transition: background-color 0.3s ease, transform 0.2s ease;
+    
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      background-color: var(--logo-btn-bg-col);
+      color: var(--logo-btn-col);
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+
+    }
+
+
+    svg {
+      width: 2rem;
+      align-self: flex-start;
+    }
+
 
   }
+
 
   nav ul {
     list-style: none;
@@ -69,8 +82,32 @@
       justify-content: space-between;
       gap: 0.5rem;
     }
-
+ 
   }
+
+
+  .total-notes-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: var(--preferences-text-col);
+      padding: 0.75rem 1rem;
+
+
+      .total-notes-section-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.5rem;
+
+
+        svg {
+          width: 1.2rem;
+        }
+      }
+  }
+
+
 
   .themes {
     .fonts {
@@ -140,47 +177,13 @@
 
 
 .font-selector {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
-
-  button {
-    padding: 0.5rem 1.2rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: var(--primary-col);
-    outline: 1px solid var(--btn-focus-outline, #5b9bd5);
-    color: #fff;
-
-    // Font-specific styling
-    &:nth-child(1) { font-family: 'Inter', sans-serif; }
-    &:nth-child(2) { font-family: 'Merriweather', serif; }
-    &:nth-child(3) { font-family: 'Fira Code', monospace; }
-
-    &:hover {
-      background-color: var(--affirm-btn-hover-col);
-      border-color: #999;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--btn-focus-outline, #5b9bd5);
-      outline-offset: 2px;
-
-    }
-
-    &.active {
-      outline-offset: 2px;
-      color: white;
-      border-color: transparent;
-      font-weight: 600;
-      color: #333;
-      background-color: #f9f9f9;
-    }
+  
+  select {
+    cursor: pointer;  
+    width: 100%;
+    height: 2rem;
   }
+
 }
   
 }

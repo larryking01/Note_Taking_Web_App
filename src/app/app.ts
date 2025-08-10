@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ErrorBanner } from './components/error-banner/error-banner';
 import { ToastBanner } from './components/toast-banner/toast-banner';
+import { ThemeService } from './services/themes/theme-service';
 // import { Navbar } from './components/navbar/navbar';
 
 @Component({
@@ -11,23 +12,36 @@ import { ToastBanner } from './components/toast-banner/toast-banner';
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
-  protected title = 'Note_Taking_Web_App';
+  protected title = 'Notopia';
+
+  themeService = inject( ThemeService )
 
   ngOnInit(): void {
-    const savedTheme = localStorage.getItem('preferred-theme') || ''
-    const savedFont = localStorage.getItem('preferred-font')
+    this.initializeSelectedTheme()
+    this.initializeSelectedFont()
+  }
 
+
+  initializeSelectedTheme() {
+    const savedTheme = localStorage.getItem('preferred-theme') || ''
     document.body.classList.remove('dark', 'green')
     if( savedTheme ) {
       document.body.classList.add( savedTheme )
     }
 
+  }
+
+
+  initializeSelectedFont() {
+    const savedFont = this.themeService.getSavedFont()
     if( savedFont ) {
-      console.log('saved font = ', savedFont)
+      console.log('initial font from local storage = ', savedFont)
       document.body.classList.remove('sans', 'sans-serif', 'monospace')
       document.body.classList.add( savedFont )
     }
-
+    else {
+      document.body.classList.add('sans')
+    }
   }
 
 }

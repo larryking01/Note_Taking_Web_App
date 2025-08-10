@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Navbar } from '../navbar/navbar';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
-import { Observable } from 'rxjs';
 import { NoteInterface } from '../../models/noteInterface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -19,39 +18,30 @@ import { ErrorService } from '../../services/errorService/error-service';
 export class DisplayNotes implements OnInit {
 
   notesService = inject( NoteCrudService )
-
   router = inject( Router )
-
   toastService = inject( ToastService )
-
   errorService = inject( ErrorService )
 
-  allNotes$: Observable<NoteInterface[]> = this.notesService.getUserNotesRealTime()
-
   AllNotesArray: NoteInterface[] = []
-
+  activeNotes: NoteInterface[] = []
   filteredNotes: NoteInterface[] = []
 
   searchQuery: string = '';
-
   selectedNoteID: string = ''
 
   ngOnInit(): void {
     this.notesService.getUserNotesRealTime().subscribe({
       next: ( data => { 
         this.AllNotesArray = data
-        console.log( this.AllNotesArray)
-        this.notesService.totalNotes.set( this.AllNotesArray.length )
-        this.filterNotes()
         this.filterNotesOnArchiveStatus()
        })
     })
+
   }
 
 
   
   navigateToEditNote(note: NoteInterface) {
-    // this.router.navigate(['edit-note'])
     console.log("selected note = ", note)
     this.router.navigate(['edit-note', note.id ])
 
@@ -60,7 +50,7 @@ export class DisplayNotes implements OnInit {
 
   filterNotes(): void {
     const query = this.searchQuery.toLocaleLowerCase()
-    this.filteredNotes = this.AllNotesArray.filter( note => 
+    this.filteredNotes = this.activeNotes.filter( note => 
       note.title.toLowerCase().includes( query ) ||
       note.content.toLowerCase().includes( query ) ||
       note.tag.toLocaleLowerCase().includes( query )
@@ -71,7 +61,7 @@ export class DisplayNotes implements OnInit {
 
   filterNotesOnArchiveStatus(): void {
     this.filteredNotes = this.AllNotesArray.filter( note => note.isArchived === false )
-    this.notesService.totalArchivedNotes.set( this.AllNotesArray.length - this.filteredNotes.length )
+    this.activeNotes = this.AllNotesArray.filter( note => note.isArchived === false )
   }
 
 
