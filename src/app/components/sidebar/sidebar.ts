@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsiveness';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
-import { map } from 'rxjs'
-
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [ RouterModule, CommonModule ],
+  imports: [ RouterModule, CommonModule, FormsModule ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })
@@ -28,44 +28,30 @@ export class Sidebar  implements OnInit {
   noteCRUDService = inject( NoteCrudService )
 
   ngOnInit(): void {
-    this.getTotalUserNotesCount()
-    this.getTotalActiveNotesCount()
-    this.getTotalArchivedNotes()
-    this.archivedNotesCount = this.noteCRUDService.totalArchivedNotes()
+    this.calculateNoteStatistics()
   }
 
 
-  getTotalUserNotesCount() {
-    this.noteCRUDService.getUserNotesRealTime().subscribe({
-      next: ( data ) => {
-        this.totalNotesCount = data.length
-      }
-    })
-  }
+  calculateNoteStatistics() {
+    this.noteCRUDService.getTotalNotesCount()
+    this.noteCRUDService.getTotalActiveNotesCount()
+    this.noteCRUDService.getTotalArchivedNotesCount()
 
-
-  getTotalActiveNotesCount() {
-    this.noteCRUDService.getUserNotesRealTime().pipe(
-      map( notes => notes.filter( note => note.isArchived === false ))
-    )
+    combineLatest([
+      this.noteCRUDService.totalNotesCount$,
+      this.noteCRUDService.totalActiveNotesCount$,
+      this.noteCRUDService.totalArchivedNotesCount$
+    ])
     .subscribe({
-      next: ( data ) => {
-        this.activeNotesCount = data.length
+      next: ([ totalNotes, totalActiveNotes, totalArchivedNotes]) => {
+        this.totalNotesCount = totalNotes
+        this.activeNotesCount = totalActiveNotes,
+        this.archivedNotesCount = totalArchivedNotes
       }
     })
+
   }
 
-
-  getTotalArchivedNotes() {
-    this.noteCRUDService.getUserNotesRealTime().pipe(
-      map( notes => notes.filter( note => note.isArchived === true ))
-    )
-    .subscribe({
-      next: ( data ) => {
-        this.archivedNotesCount = data.length
-      }
-    })
-  }
 
   toggleTheme() {
     this.lightMode = !this.lightMode
@@ -75,9 +61,6 @@ export class Sidebar  implements OnInit {
     this.sidebarService.setShowSidebarFalse()
   }
 
-  // showCloseSidebarBtn() {
-  //   return this.notesService.setShowCloseSidebarBtn()
-  // }
 
   navigateToCreateNote() {
     this.router.navigate(['create'])
@@ -103,8 +86,7 @@ export class Sidebar  implements OnInit {
     this.router.navigate([ route ])
   }
 
-  setFont(font: string) {
-    this.fontType = font
+  setFont() {
     console.log('font type = ', this.fontType)
     document.body.classList.remove('sans', 'sans-serif', 'monospace')
     localStorage.setItem("preferred-font", this.fontType)
@@ -143,5 +125,35 @@ export class Sidebar  implements OnInit {
     
   }
 
+
+
+  // calculateTotalNotes() {
+  //   this.noteCRUDService.getTotalNotesCount()
+  //   this.noteCRUDService.totalNotesCount$.subscribe({
+  //     next: ( totalNotes ) => {
+  //       this.totalNotesCount = totalNotes
+  //     }
+  //   })
+  // }
+
+
+  // calculateTotalActiveNotes() {
+  //   this.noteCRUDService.getTotalActiveNotesCount()
+  //   this.noteCRUDService.totalActiveNotesCount$.subscribe({
+  //     next: ( totalActiveNotes ) => {
+  //       this.activeNotesCount = totalActiveNotes
+  //     }
+  //   })
+  // }
+
+
+  // calculateTotalArchivedNotes() {
+  //   this.noteCRUDService.getTotalArchivedNotesCount()
+  //   this.noteCRUDService.totalArchivedNotesCount$.subscribe({
+  //     next: ( totalArchivedNotes ) => {
+  //       this.archivedNotesCount = totalArchivedNotes
+  //     }
+  //   })
+  // }
 
 }

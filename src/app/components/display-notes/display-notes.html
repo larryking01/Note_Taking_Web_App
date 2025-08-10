@@ -2,7 +2,7 @@
     <app-sidebar />
 
     <section class="main">
-        <app-navbar [pageTitle]="'My Notes'" />
+        <app-navbar [pageTitle]="'Your current notes at a glance'" />
 
         <div class="notes-content">
             <input type="text" placeholder="Search active notes by title, tag or content.." 
@@ -51,7 +51,7 @@
                                     <button (click)="navigateToEditNote(note)" class="edit-note-btn">
                                         <div class="note-tag-icon">
                                             <i class="fa-solid fa-circle-info"></i>
-                                            <p class="button-text">Details</p>
+                                            <p class="button-text">View</p>
                                         </div>
                                     </button>
                                 

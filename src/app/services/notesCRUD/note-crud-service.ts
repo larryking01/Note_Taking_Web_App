@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs'
 import { Firestore, collection, addDoc, CollectionReference, getDoc,
          getDocs, collectionData, docData, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { Auth, authState } from '@angular/fire/auth';
-import { Observable, switchMap, of } from 'rxjs';
+import { Observable, switchMap, of, map } from 'rxjs';
 
 
 
@@ -15,11 +15,17 @@ export class NoteCrudService {
   private AllNotesArray = new BehaviorSubject<NoteInterface[]>([])
   AllNotesArray$ = this.AllNotesArray.asObservable()
 
+  private totalNotesCount = new BehaviorSubject<number>(0)
+  totalNotesCount$ = this.totalNotesCount.asObservable() 
+
+  private totalActiveNotesCount = new BehaviorSubject<number>(0)
+  totalActiveNotesCount$ = this.totalActiveNotesCount.asObservable()
+
+  private totalArchivedNotesCount = new BehaviorSubject<number>(0)
+  totalArchivedNotesCount$ = this.totalArchivedNotesCount.asObservable()
+
   private firestore = inject( Firestore )
   private auth = inject( Auth )
-
-  // totalNotes: WritableSignal<number> = signal(0)
-  totalArchivedNotes: WritableSignal<number> = signal(0)
 
 
   async createNewNote( note: NoteInterface ) {
@@ -133,6 +139,39 @@ export class NoteCrudService {
 
   }
 
+
+
+  getTotalNotesCount() {
+    this.getUserNotesRealTime().subscribe({
+      next: ( notes ) => {
+        this.totalNotesCount.next( notes.length )
+      }
+    })
+  }
+
+
+  getTotalActiveNotesCount() {
+    this.getUserNotesRealTime().pipe(
+      map( notes => notes.filter( note => note.isArchived === false ))
+    )
+    .subscribe({
+      next: ( activeNotes ) => {
+        this.totalActiveNotesCount.next( activeNotes.length )
+      }
+    })
+  }
+  
+
+  getTotalArchivedNotesCount() {
+    this.getUserNotesRealTime().pipe(
+      map( notes => notes.filter( note => note.isArchived === true ))
+    )
+    .subscribe({
+      next: ( archivedNotes ) => {
+        this.totalArchivedNotesCount.next( archivedNotes.length )
+      }
+    })
+  }
 
    
 

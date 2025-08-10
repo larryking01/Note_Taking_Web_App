@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsiveness';
 
+
 @Component({
   selector: 'app-navbar',
   imports: [CommonModule],
@@ -80,6 +81,5 @@ export class Navbar implements OnInit {
   navigateToHome() {
     this.router.navigate(['/'])
   }
-
 
 }

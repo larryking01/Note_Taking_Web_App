@@ -19,6 +19,8 @@
 /* Notes */
 .notes-content {
   padding: 2rem;
+  background-color: var(--main-content-bg);
+  min-height: 100vh;
 
   .update-note-tag-icon {
     display: flex;
