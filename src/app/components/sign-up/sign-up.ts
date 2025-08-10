@@ -41,7 +41,6 @@ export class SignUp {
       
       this.authService.signUp( email, password )
       .then( userCredentials => {
-        console.log('User registered: ', userCredentials.user )
         this.signUpForm.reset()
         this.toastService.handleSuccess("You're all set! Let's help you take your first note.")
         this.navigateToHome()

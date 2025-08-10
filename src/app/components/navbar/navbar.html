@@ -5,7 +5,7 @@
 
     <span class="page-title">{{ pageTitle }}</span>
 
-    <div class="user-info">
+    <div [ngClass]="isSmallScreen === true ? 'hidden' : 'user-info' ">
         <i class="fa-solid fa-user user-icon" *ngIf="currentUserEmail"></i>
         
         <span *ngIf="currentUserEmail">{{ currentUserEmail }}</span>

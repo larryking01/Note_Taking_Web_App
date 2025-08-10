@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ErrorBanner } from './components/error-banner/error-banner';
 import { ToastBanner } from './components/toast-banner/toast-banner';
 import { ThemeService } from './services/themes/theme-service';
-// import { Navbar } from './components/navbar/navbar';
+
 
 @Component({
   selector: 'app-root',
@@ -35,7 +35,6 @@ export class App implements OnInit {
   initializeSelectedFont() {
     const savedFont = this.themeService.getSavedFont()
     if( savedFont ) {
-      console.log('initial font from local storage = ', savedFont)
       document.body.classList.remove('sans', 'sans-serif', 'monospace')
       document.body.classList.add( savedFont )
     }

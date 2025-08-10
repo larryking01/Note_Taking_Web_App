@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/authentication/auth-service';
 import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsiveness';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { ThemeService } from '../../services/themes/theme-service';
@@ -21,6 +22,11 @@ export class Sidebar  implements OnInit {
 
   isSmallScreen: boolean = false;
 
+  isLoggedIn: boolean = false
+
+  currentUserEmail: string | null | undefined = null;
+
+
   totalNotesCount = 0
   activeNotesCount = 0
   archivedNotesCount = 0
@@ -29,12 +35,36 @@ export class Sidebar  implements OnInit {
   sidebarService = inject( SidebarResponsiveness )
   noteCRUDService = inject( NoteCrudService )
   themeService = inject( ThemeService )
+  authService = inject( AuthService )
 
   ngOnInit(): void {
     window.addEventListener('resize', this.checkScreenSize.bind(this))
     this.checkScreenSize()
     this.calculateNoteStatistics()
     this.initializeFontType()
+    this.displayCurrentUserInfo()
+  }
+
+
+  displayCurrentUserInfo() {
+    this.authService.users$.subscribe({
+      next: ( user ) => {
+        this.currentUserEmail = user?.email;
+        this.isLoggedIn = !!user
+        console.log('current user = ', this.isLoggedIn )
+      }
+    })
+
+  }
+
+  signOutUser() {
+    this.authService.signOut().then(() => {
+      console.log('current user = ', this.isLoggedIn )
+      this.router.navigate(['/'])
+    })
+    .catch( err => {
+      console.error( 'sign out error, ', err)
+    })
   }
 
 
