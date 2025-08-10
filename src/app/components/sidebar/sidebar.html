@@ -1,10 +1,16 @@
   <!-- Sidebar -->
 <aside [ngClass]="{'sidebar': sidebarService.showSidebar === true, 'hidden': sidebarService.showSidebar === false }">
   <main class="nav-main">
-  
-    <i class="fa-solid fa-xmark hide-sidebar-icon" (click)="hideSidebar()" *ngIf="sidebarService.showSidebar === true"></i>    
+    
+    <section class="title-and-close-section">
+      <div class="logo" aria-label="See all notes">📝 Notopia</div>
 
-    <button class="logo" aria-label="See all notes">📝 Notopia</button>
+      <div (click)="hideSidebar()" *ngIf="sidebarService.showSidebar === true && isSmallScreen === true">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </div>
+    </section>
 
     <div class="total-notes-section">
       <div class="total-notes-section-title">
@@ -63,11 +69,7 @@
     <section class="fonts">
       <h3>Fonts:</h3>
         <div class="font-selector">
-          <!-- <button [class.active]="fontType === 'sans'" (click)="setFont('sans')">Sans</button>
-          <button [class.active]="fontType === 'sans-serif'" (click)="setFont('sans-serif')">Serif</button>
-          <button [class.active]="fontType === 'monospace'" (click)="setFont('monospace')">Mono</button> -->
-
-          <select [(ngModel)]="fontType" (ngModelChange)="setFont()">
+          <select [(ngModel)]="fontType" (ngModelChange)="setPreferredFont($event)">
             <option value="sans">Sans</option>
             <option value="sans-serif">Sans-Serif</option>
             <option value="monospace">Monospace</option>

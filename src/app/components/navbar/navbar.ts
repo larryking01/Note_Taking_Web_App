@@ -10,7 +10,6 @@ import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsive
   imports: [CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
-  // encapsulation: ViewEncapsulation.None
 })
 export class Navbar implements OnInit {
   @Input() pageTitle: string = ''
@@ -45,8 +44,9 @@ export class Navbar implements OnInit {
 
 
   checkScreenSize() {
-    console.log( window.innerWidth <= 800 )
+    console.log( "screen width =", window.innerWidth )
     this.isSmallScreen = window.innerWidth <= 800
+    console.log("small screen = ", this.isSmallScreen)
     if( this.isSmallScreen ) {
       this.sidebarService.setShowSidebarFalse()
     }

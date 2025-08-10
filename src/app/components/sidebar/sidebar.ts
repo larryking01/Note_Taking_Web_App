@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SidebarResponsiveness } from '../../services/sidebar/sidebar-responsiveness';
 import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
+import { ThemeService } from '../../services/themes/theme-service';
 import { combineLatest } from 'rxjs';
 
 @Component({
@@ -14,10 +15,11 @@ import { combineLatest } from 'rxjs';
 })
 export class Sidebar  implements OnInit {
 
-
-  fontType: string = 'sans';
-  themeType: string = '';
+  fontType: string | null = null;
+  themeType: string = '';   
   lightMode: boolean = true;
+
+  isSmallScreen: boolean = false;
 
   totalNotesCount = 0
   activeNotesCount = 0
@@ -26,9 +28,13 @@ export class Sidebar  implements OnInit {
   router = inject( Router )
   sidebarService = inject( SidebarResponsiveness )
   noteCRUDService = inject( NoteCrudService )
+  themeService = inject( ThemeService )
 
   ngOnInit(): void {
+    window.addEventListener('resize', this.checkScreenSize.bind(this))
+    this.checkScreenSize()
     this.calculateNoteStatistics()
+    this.initializeFontType()
   }
 
 
@@ -53,26 +59,24 @@ export class Sidebar  implements OnInit {
   }
 
 
+  initializeFontType() {
+    const currentFont = this.themeService.getSavedFont()
+    if( currentFont ) {
+      this.fontType = currentFont
+    }
+    else {
+      this.fontType = 'sans'
+    }
+
+  }
+
+
   toggleTheme() {
     this.lightMode = !this.lightMode
   }
 
   hideSidebar() {
     this.sidebarService.setShowSidebarFalse()
-  }
-
-
-  navigateToCreateNote() {
-    this.router.navigate(['create'])
-    
-  }
-
-  navigateToHome() {
-    this.router.navigate(['/'])
-  }
-
-  navigateToArchived() {
-    this.router.navigate(['archived'])
   }
 
   handleKeyDown(event: KeyboardEvent, route: string) {
@@ -86,13 +90,20 @@ export class Sidebar  implements OnInit {
     this.router.navigate([ route ])
   }
 
-  setFont() {
-    console.log('font type = ', this.fontType)
-    document.body.classList.remove('sans', 'sans-serif', 'monospace')
-    localStorage.setItem("preferred-font", this.fontType)
-    console.log('saved font = ', localStorage.getItem('preferred-font'))
-    document.body.classList.add( this.fontType )
+  checkScreenSize() {
+    console.log( "screen width =", window.innerWidth )
+    this.isSmallScreen = window.innerWidth <= 800
+    console.log("small screen = ", this.isSmallScreen)
+    if( this.isSmallScreen ) {
+      this.sidebarService.setShowSidebarFalse()
+    }
+    else {
+      this.sidebarService.setShowSidebarTrue()
+    }
+
   }
+  
+
 
 
   setThemeLight() {
@@ -123,6 +134,11 @@ export class Sidebar  implements OnInit {
     console.log( document.body.classList )
     localStorage.setItem('preferred-theme', this.themeType)
     
+  }
+
+
+  setPreferredFont(font: string) {
+    this.themeService.setFont(font)
   }
 
 
