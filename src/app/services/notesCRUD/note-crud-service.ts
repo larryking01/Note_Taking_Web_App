@@ -1,4 +1,4 @@
-import { Injectable, inject, signal, WritableSignal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { NoteInterface } from '../../models/noteInterface';
 import { BehaviorSubject } from 'rxjs'
 import { Firestore, collection, addDoc, CollectionReference, getDoc,
@@ -12,6 +12,9 @@ import { Observable, switchMap, of, map } from 'rxjs';
   providedIn: 'root'
 })
 export class NoteCrudService {
+  private firestore = inject( Firestore )
+  private auth = inject( Auth )
+
   private AllNotesArray = new BehaviorSubject<NoteInterface[]>([])
   AllNotesArray$ = this.AllNotesArray.asObservable()
 
@@ -23,9 +26,6 @@ export class NoteCrudService {
 
   private totalArchivedNotesCount = new BehaviorSubject<number>(0)
   totalArchivedNotesCount$ = this.totalArchivedNotesCount.asObservable()
-
-  private firestore = inject( Firestore )
-  private auth = inject( Auth )
 
 
   async createNewNote( note: NoteInterface ) {
@@ -41,7 +41,6 @@ export class NoteCrudService {
       }
 
       await addDoc( notesReference, newNote )
-      console.log("note created = ", newNote)
     }
     
   }
@@ -87,7 +86,6 @@ export class NoteCrudService {
         } 
         else {
           const noteRef = doc(this.firestore, `Users/${user.email}/notes/${noteId}`);
-          console.log('from service, note id = ', noteId )
           return docData(noteRef, { idField: 'id' }) as Observable<NoteInterface>;
         }
       })

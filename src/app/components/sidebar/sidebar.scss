@@ -14,7 +14,7 @@
   position: sticky;
   top: 0;
 
-  
+
   .hide-sidebar-icon {
     cursor: pointer;
   }
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     color: var(--logo-btn-col);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     margin-top: 1rem;
     width: 100%;
     
@@ -46,7 +46,6 @@
 
 
   }
-
 
   nav ul {
     list-style: none;
@@ -110,21 +109,39 @@
 
 
   .themes {
-    .fonts {
-      margin-bottom: 3rem;
-    }
-
     h3 {
       color: var(--preferences-text-col);
       margin-bottom: 1rem;
     }
 
+    .fonts {
+      margin-bottom: 1.5rem;
 
-  }
+      h3 {
+        color: var(--preferences-text-col);
+        margin-bottom: 0.7rem;
+        font-weight: normal;
+      }
 
+      .font-selector {
+        
+        select {
+          cursor: pointer;  
+          width: 100%;
+          height: 2rem;
+        }
+
+      }
+    }
 
 
   .colors {
+
+    h3 {
+      color: var(--preferences-text-col);
+      margin-bottom: 0.7rem;
+      font-weight: normal;
+    }
 
     .theme-buttons {
       display: flex;
@@ -175,22 +192,59 @@
     }
   }
 
-
-.font-selector {
-  
-  select {
-    cursor: pointer;  
-    width: 100%;
-    height: 2rem;
   }
-
-}
   
 }
 
 
 .hidden {
   display: none;
+}
+
+
+.account-info {
+  height: 8rem;
+  color: var(--preferences-text-col);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h3 {
+    color: var(--preferences-text-col);
+    margin-bottom: 1rem;
+  }
+
+  .user-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    svg {
+      width: 1.4rem
+    }
+
+    p {
+      color: var(--preferences-text-col);
+    }
+
+  }
+
+  .sign-out-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--sidebar-section-hover-bg-col);
+    color: var(--sidebar-bg-col);
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 0.625rem;
+    height: 2.2rem;
+    padding: 0.2rem 0.5rem;
+
+  }
+
 }
 
 
