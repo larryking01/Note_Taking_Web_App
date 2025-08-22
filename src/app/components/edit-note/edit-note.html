@@ -32,6 +32,8 @@
                 <div *ngIf="noteForm.get('noteTag')?.invalid && noteForm.get('noteTag')?.touched">
                     <small *ngIf="noteForm.get('noteTag')?.errors?.['required']">Note tag is required</small>
                 </div>
+
+                <label for="note-tag">Select Tag</label>
                 <select class="note-tag" formControlName="noteTag">
                     <option value="" disabled selected>Select tag</option>
                     <option value="Personal">Personal</option>

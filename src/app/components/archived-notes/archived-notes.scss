@@ -28,13 +28,17 @@
     gap: 1.5rem;
 
     .note-card {
-      background-color: var(--note-card-bg-work);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: var(--archived-notes-bg);
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease;
       color: var(--font-color);
-      border-left: 4px solid var(--note-border-left-col);
+      border-left: 4px solid var(--archived-notes-border-col);
+      border-bottom: 4px solid var(--archived-notes-border-col);
 
       &:hover {
         transform: translateY(-2px);
@@ -79,21 +83,27 @@
   }
 
   .no-notes-text {
-      color: var(--font-color);
+      color: var(--preferences-text-col);
       font-size: 0.9rem;
   }
 }
 
 
 .search-input {
+    background-color: var(--font-select-bg);
+    border: 1px solid var(--sidebar-bg-col);
+    color: var(--font-select-col);
     width: 100%;
     // max-width: 400px;
     padding: 0.5rem 1rem;
     margin-bottom: 1.5rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
     border-radius: 6px;  
     @include focus-visible-style();
+
+    &::placeholder {
+      color: var(--font-select-col);
+    }
 
   }
 

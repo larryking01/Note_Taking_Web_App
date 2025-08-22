@@ -8,38 +8,42 @@
 
     <!-- Notes Content -->
     <section class="notes-content">
-      <div>
-      <input type="text" placeholder="Search archived notes by title, tag or content.." 
+        @if(isLoading) {
+            <app-loading-state [loadingMessage]="'Fetching notes from the archive, please wait…'" />
+        }
+
+        @if( filteredNotes.length > 0 ) {
+        <input type="text" placeholder="Search archived notes by title, tag or content.." 
               [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" 
               class="search-input"/>
 
-        <div *ngIf="ArchivedNotesArray.length > 0">
-          <div *ngIf="filteredNotes.length; else noArchived" class="notes-grid">
-            <div *ngFor="let note of filteredNotes" class="note-card">
-              <h3 class="note-title">{{ note.title }}</h3>
-              <p class="note-content">{{ note.content }}</p>
+          <div class="notes-grid">
+            @for( note of filteredNotes; track note.id ) {
+              <div class="note-card">
+                <h3 class="note-title">{{ note.title }}</h3>
+                <p class="note-content">{{ note.content }}</p>
 
-              <div class="note-tag-icon">
-                  <i class="fa-solid fa-tag tag-img"></i>
-                  <p class="note-tag">{{ note.tag }}</p>
-                  <!-- <p>isArchived: {{ note.isArchived }}</p> -->
+                <div class="note-tag-icon">
+                    <i class="fa-solid fa-tag tag-img"></i>
+                    <p class="note-tag">{{ note.tag }}</p>
+                    <!-- <p>isArchived: {{ note.isArchived }}</p> -->
+                </div>
+
+                <button (click)="unarchiveNote(note)" class="unarchive-btn" *ngIf="note.isArchived === true">
+                    <div class="note-tag-icon">
+                        <i class="fa-solid fa-lock-open"></i>
+                        <p class="button-text">Unarchive</p>
+                    </div>
+                </button>
               </div>
-
-              <button (click)="unarchiveNote(note)" class="unarchive-btn" *ngIf="note.isArchived === true">
-                  <div class="note-tag-icon">
-                      <i class="fa-solid fa-lock-open"></i>
-                      <p class="button-text">Unarchive</p>
-                  </div>
-              </button>
-            </div>
+          }
 
           </div>
-        </div>
+      }
 
-        <ng-template #noArchived>
-          <p class="no-notes-text">No archived notes found.</p>
-        </ng-template>
-      </div>
+      @if( isLoading === false && filteredNotes.length === 0) {
+          <app-empty-state [emptyMessage]="'Your archive is empty. Keep notes here when you’re ready to store them away.'" />
+      }
     </section>
   </div>
 </div>

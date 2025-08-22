@@ -5,14 +5,16 @@ import { NoteCrudService } from '../../services/notesCRUD/note-crud-service';
 import { NoteInterface } from '../../models/noteInterface';
 import { ToastService } from '../../services/successToast/toast-service';
 import { ErrorService } from '../../services/errorService/error-service';
-import { Observable, map } from 'rxjs';
+import { map } from 'rxjs';
 import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
+import { EmptyState } from '../empty-state/empty-state';
+import { LoadingState } from '../loading-state/loading-state';
 
 
 @Component({
   selector: 'app-archived-notes',
-  imports: [Sidebar, Navbar, CommonModule, FormsModule],
+  imports: [Sidebar, Navbar, CommonModule, FormsModule, EmptyState, LoadingState],
   templateUrl: './archived-notes.html',
   styleUrl: './archived-notes.scss'
 })
@@ -31,6 +33,7 @@ export class ArchivedNotes implements OnInit {
   filteredNotes: NoteInterface[] = []
 
   searchQuery: string = '';
+  isLoading: boolean = true;
 
 
   ngOnInit(): void {
@@ -39,6 +42,7 @@ export class ArchivedNotes implements OnInit {
     )
     .subscribe({
       next: ( archivedNotes ) => {
+        this.isLoading = false
         this.ArchivedNotesArray = archivedNotes
         this.filteredNotes = archivedNotes
       }

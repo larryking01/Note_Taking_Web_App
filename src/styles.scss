@@ -14,6 +14,10 @@
   --preferences-text-col: #292966;
   --action-btn-bg-col: #5C5C99;
   --action-btn-col: #fff;
+  --font-select-bg: #fff;
+  --font-select-col: black;
+  --archived-notes-bg: #f0f0f0;
+  --archived-notes-border-col: #292966;
 
 
   --icon-color: #292966;
@@ -30,18 +34,32 @@
 
 
 body.dark {
-  --primary-col: black;
-  --icon-color: #fff;
-  --affirm-btn-hover-col: #1c1f26;
+
+  --sidebar-bg-col: #0C0E16;
+  --navbar-bg-col: #0C0E16;
+  --main-content-bg: #252945;
+  --preferences-text-col: #EDEDED;
+  --sidebar-section-col: #EDEDED;
+  --sidebar-section-hover-bg-col: #5C5C99;
+  --logo-btn-col: #EDEDED;
+  --logo-btn-bg-col: #0C0E16;
+  --font-select-bg: #5C5C99;
+  --font-select-col: #EDEDED;
+  --action-btn-bg-col: #5C5C99;
+  --action-btn-col: #fff;
+  --archived-notes-bg: #8c8c8c;
+  --archived-notes-border-col: #0C0E16;
+
+  --icon-color: #292966;
+  --affirm-btn-hover-col: #5C5C99;
+  --note-card-bg-work: #F0F0F0;
+  --btn-focus-outline: #A3A3CC;
   --cancel-btn-bg: red;
   --cancel-btn-hover-col: tomato;
-  --navbar-bg: #1c1f26 ;
-  --note-card-bg-work: black;
-  --font-color: #fff;
-  --main-content-bg: #121212;
-  --btn-focus-outline: green;
-  --font-color: #fff;
-  --note-border-left-col: #fff;
+  --initial-black: #1c1f26;
+  --font-color: black;
+  --note-border-left-col: #292966;
+
 }
 
 

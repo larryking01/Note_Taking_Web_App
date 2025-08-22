@@ -129,7 +129,17 @@
           cursor: pointer;  
           width: 100%;
           height: 2rem;
+          background-color: var(--font-select-bg);
+          border-radius: 0.3rem;
+          color: var(--font-select-col);
+
+          &::placeholder {
+            color: var(--font-select-col);
+          }
+
         }
+
+
 
       }
     }
@@ -145,7 +155,8 @@
 
     .theme-buttons {
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
+      gap: 1rem;
       margin-top: 0.5rem;
     }
 
