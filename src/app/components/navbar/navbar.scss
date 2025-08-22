@@ -12,30 +12,33 @@
 
   .hamburder-div {
     cursor: pointer;
+    color: var(--font-select-col);
   }
 
 
-  .hamburger-icon {
-    color: var(--font-color);
-  }
+  // .hamburger-icon {
+  //   color: var(--font-color);
+  // }
 
   .page-title {
     font-size: 1.2rem;
     font-weight: 600;
+    color: var(--preferences-text-col);
   }
 
   .user-info {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: var(--preferences-text-col);
 
     img {
       border-radius: 50%;
     }
   }
 
-  span {
-    color: var(--font-color);
+  .user-email-text {
+    color: var(--preferences-text-col);
   }
 
 
@@ -54,7 +57,24 @@
 
   .hidden {
     display: none;
+
   }
 
   
+}
+
+
+
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+
+    .page-title {
+      font-size: 0.85rem;
+    }
+
+  }
 }

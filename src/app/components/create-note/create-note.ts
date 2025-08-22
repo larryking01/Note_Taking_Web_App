@@ -56,7 +56,7 @@ export class CreateNote {
   createNewNote() {
     if( this.noteForm.invalid ) {
       this.noteForm.markAllAsTouched()
-      this.errorService.handleError("Hang on — a few required details are missing. You’re almost there!")
+      this.errorService.handleError("All fields are required. Add your title, content and tag to continue.")
       return
     }
     else {

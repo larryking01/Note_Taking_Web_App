@@ -50,63 +50,61 @@
     margin: 0 auto;
 
 
+  label {
+    color: var(--preferences-text-col);
+  }
+
     small {
       color: red;
     }
 
 
     .note-title {
+      background-color: var(--font-select-bg);
+      border: 1px solid var(--sidebar-bg-col);
+      color: var(--font-select-col);
       width: 100%;
       padding: 1rem 1rem;
       margin-bottom: 1.5rem;
       font-size: 1rem;
-      border: 1px solid #ccc;
       border-radius: 6px;  
       @include focus-visible-style();
     }
 
 
     .note-content {
+      background-color: var(--font-select-bg);
+      border: 1px solid var(--sidebar-bg-col);
+      color: var(--font-select-col);
       width: 100%;
       padding: 1rem 1rem;
       margin-bottom: 1.5rem;
       font-size: 1rem;
-      border: 1px solid #ccc;
       border-radius: 6px;  
       @include focus-visible-style();
     }
 
 
   .note-tag {
-    appearance: none; // hide default arrow in modern browsers
+    appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
 
+    background-color: var(--font-select-bg);
+    border: 1px solid var(--sidebar-bg-col);
+    color: var(--font-select-col);
     margin-bottom: 2rem;
-    background-color: #fff;
-    color: #333;
     padding: 0.6rem 1rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
     border-radius: 6px;
     width: 100%;
     // max-width: 300px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 1rem;
 
-
-    // &:focus {
-    //   outline: none;
-    //   border-color: #5b9bd5;
-    //   box-shadow: 0 0 0 2px rgba(91, 155, 213, 0.3);
-    // }
-
     @include focus-visible-style();
-
-
 
   }
 
@@ -165,6 +163,8 @@
     }
   }
 }
+
+
 
 /* Responsive */
 @media (max-width: 768px) {
