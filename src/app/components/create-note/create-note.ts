@@ -72,6 +72,8 @@ export class CreateNote {
       }
       this.noteCrudService.createNewNote( newNote )
       this.toastService.handleSuccess("Note added successfully")
+      this.noteForm.reset()
+      // this.router.navigate(['view-notes']);
     }
 
   }

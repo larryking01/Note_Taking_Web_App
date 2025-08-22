@@ -30,7 +30,6 @@ export class Navbar implements OnInit {
       next: ( user ) => {
         this.currentUserEmail = user?.email;
         this.isLoggedIn = !!user
-        console.log('current user = ', this.isLoggedIn )
       }
     })
 
@@ -44,9 +43,7 @@ export class Navbar implements OnInit {
 
 
   checkScreenSize() {
-    console.log( "screen width =", window.innerWidth )
     this.isSmallScreen = window.innerWidth <= 800
-    console.log("small screen = ", this.isSmallScreen)
     if( this.isSmallScreen ) {
       this.sidebarService.setShowSidebarFalse()
     }
@@ -64,7 +61,6 @@ export class Navbar implements OnInit {
 
   signOutUser() {
     this.authService.signOut().then(() => {
-      console.log('current user = ', this.isLoggedIn )
       this.router.navigate(['/'])
     })
     .catch( err => {

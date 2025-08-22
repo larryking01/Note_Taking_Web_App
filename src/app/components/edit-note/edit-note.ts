@@ -48,8 +48,6 @@ export class EditNote implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.selectedNoteID = this.activatedRoute.snapshot.paramMap.get('id')!
     this.userNote$ = this.noteService.getUserNoteById( this.selectedNoteID )
-    console.log("selected note id = ", this.selectedNoteID)
-    console.log('selected note = ', this.userNote$)
 
     this.noteSubscription = this.userNote$.subscribe({
       next: ( note => {
@@ -86,9 +84,8 @@ export class EditNote implements OnInit, OnDestroy {
         tag: noteTag
       })
       .then(() => {
-        console.log('Note updated successfully');
         this.toastService.handleSuccess("Note updated successfully.")
-        this.router.navigate(['view-notes']);
+        // this.router.navigate(['view-notes']);
       })
       .catch(err => {
         this.errorService.handleError("Oops! We hit a snag. Please refresh or try again shortly")

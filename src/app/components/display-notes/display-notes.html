@@ -5,14 +5,19 @@
         <app-navbar [pageTitle]="'Your current notes at a glance'" />
 
         <div class="notes-content">
-            <input type="text" placeholder="Search active notes by title, tag or content.." 
-                   [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" 
-                   class="search-input"/>
+            @if(isLoading) {
+                <app-loading-state [loadingMessage]="'Loading your notebook, please wait...'" />
+            }
 
-                <article *ngIf="filteredNotes.length > 0; else loading">
-                    <div *ngIf="filteredNotes.length > 0; else noNotes" class="notes-grid">
+            @if( filteredNotes.length > 0 ) {
+                <input type="text" placeholder="Search active notes by title, tag or content.." 
+                    [(ngModel)]="searchQuery" (ngModelChange)="filterNotes()" 
+                    class="search-input"/>
+
+                <article>
+                    <div class="notes-grid">
                         <div *ngFor="let note of filteredNotes" class="note-card" 
-                              [ngClass]="{
+                            [ngClass]="{
                                 'work_tag_bg': note.tag==='Work',
                                 'personal_tag_bg': note.tag==='Personal',
                                 'career_tag_bg': note.tag==='Career',
@@ -69,18 +74,16 @@
                                         </div>
                                     </button>
                                 </div>                           
-                             </article>
+                            </article>
                         </div>
                     </div>
                 </article>
+            }
 
-            <ng-template #loading>
-                <p class="no-notes-text">Loading notes...</p>
-            </ng-template>
 
-            <ng-template #noNotes>
-                <p class="no-notes-text">No notes available yet..</p>
-            </ng-template>
+            @if( isLoading === false && filteredNotes.length === 0) {
+                <app-empty-state [emptyMessage]="'You don’t have any notes yet. Start by creating your first one!'" />
+            }
 
         </div>
 
