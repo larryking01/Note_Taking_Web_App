@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-loading-state',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './loading-state.scss'
 })
 export class LoadingState {
+  @Input() loadingMessage = 'Loading your content, please wait ...'
 
 }

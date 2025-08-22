@@ -1,0 +1,27 @@
+.empty-section {
+    height: 80%;
+
+    .empty-info-div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+}
+
+
+
+
+@media (max-width: 768px) {
+    .empty-section {
+        p {
+            font-size: 1rem;
+        }
+    }
+}

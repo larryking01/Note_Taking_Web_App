@@ -28,6 +28,10 @@
     color: var(--font-color);
   }
 
+  .loading-notes-text {
+    color: var(--font-color);
+  }
+
 
   .notes-grid {
     display: grid;
@@ -37,7 +41,7 @@
 
     .note-card {
       // background-color: blue;
-      height: 22rem;
+      height: 24rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -115,28 +119,28 @@
 
 
     .work_tag_bg {
-      background-color: #ffb3b3;
-      border-left: 4px solid #661f1f;
-      border-bottom: 4px solid #661f1f;
+      background-color: #fec971;
+      border-left: 4px solid #CC9E52;
+      border-bottom: 4px solid #CC9E52;
 
     }
 
     .personal_tag_bg {
-      background-color: #00e6ac;
-      border-left: 4px solid #005140;
-      border-bottom: 4px solid #005140;
+      background-color: #e4ef8f;
+      border-left: 4px solid #8c9956;
+      border-bottom: 4px solid #8c9956;
     }
 
     .career_tag_bg {
-      background-color: #4dc3ff;
-      border-left: 4px solid #1f5a73;
-      border-bottom: 4px solid #1f5a73;
+      background-color: #fe9b72;
+      border-left: 4px solid #b3664a;
+      border-bottom: 4px solid #b3664a;
     }
 
     .academic_tag_bg {
-      background-color: #e6e600;
-      border-left: 4px solid #666600;
-      border-bottom: 4px solid #666600;
+      background-color: #ffe4f2;
+      border-left: 4px solid #b399a6;
+      border-bottom: 4px solid #b399a6;
     }
 
   }

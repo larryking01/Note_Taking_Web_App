@@ -51,7 +51,6 @@ export class Sidebar  implements OnInit {
       next: ( user ) => {
         this.currentUserEmail = user?.email;
         this.isLoggedIn = !!user
-        console.log('current user = ', this.isLoggedIn )
       }
     })
 
@@ -59,7 +58,6 @@ export class Sidebar  implements OnInit {
 
   signOutUser() {
     this.authService.signOut().then(() => {
-      console.log('current user = ', this.isLoggedIn )
       this.router.navigate(['/'])
     })
     .catch( err => {
@@ -121,9 +119,7 @@ export class Sidebar  implements OnInit {
   }
 
   checkScreenSize() {
-    console.log( "screen width =", window.innerWidth )
     this.isSmallScreen = window.innerWidth <= 800
-    console.log("small screen = ", this.isSmallScreen)
     if( this.isSmallScreen ) {
       this.sidebarService.setShowSidebarFalse()
     }
@@ -150,7 +146,6 @@ export class Sidebar  implements OnInit {
     this.themeType = 'dark'
     document.body.classList.remove('dark', 'green')
     document.body.classList.add(this.themeType)
-    console.log( document.body.classList )
     localStorage.setItem('preferred-theme', this.themeType)
 
   }
@@ -161,7 +156,6 @@ export class Sidebar  implements OnInit {
     this.themeType = 'green'
     document.body.classList.remove('dark', 'green')
     document.body.classList.add(this.themeType)
-    console.log( document.body.classList )
     localStorage.setItem('preferred-theme', this.themeType)
     
   }

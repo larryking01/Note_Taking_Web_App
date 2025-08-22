@@ -24,12 +24,14 @@
         <button type="submit" class="add-new-user-btn" aria-label="Register">
             <div class="update-note-tag-icon">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                <p class="button-text">Register</p>
+                <p class="button-text">Sign Up</p>
             </div>
         </button>
 
         <div class="account-recovery">
-            <p (click)="navigateToSignIn()">Already have an account? Sign in here</p>
+            <a routerLink="/sign-in">
+                <p>Already have an account? Sign in here</p>
+            </a>
         </div>
     </form>
 </section>

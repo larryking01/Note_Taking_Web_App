@@ -8,10 +8,12 @@ import { Sidebar } from "../sidebar/sidebar";
 import { FormsModule } from '@angular/forms';
 import { ToastService } from '../../services/successToast/toast-service';
 import { ErrorService } from '../../services/errorService/error-service';
+import { EmptyState } from '../empty-state/empty-state';
+import { LoadingState } from '../loading-state/loading-state';
 
 @Component({
   selector: 'app-display-notes',
-  imports: [Navbar, CommonModule, Sidebar, FormsModule],
+  imports: [Navbar, CommonModule, Sidebar, FormsModule, EmptyState, LoadingState],
   templateUrl: './display-notes.html',
   styleUrl: './display-notes.scss'
 })
@@ -29,9 +31,12 @@ export class DisplayNotes implements OnInit {
   searchQuery: string = '';
   selectedNoteID: string = ''
 
+  isLoading: boolean = true
+
   ngOnInit(): void {
     this.notesService.getUserNotesRealTime().subscribe({
       next: ( data => { 
+        this.isLoading = false
         this.AllNotesArray = data
         this.filterNotesOnArchiveStatus()
        })
@@ -42,7 +47,6 @@ export class DisplayNotes implements OnInit {
 
   
   navigateToEditNote(note: NoteInterface) {
-    console.log("selected note = ", note)
     this.router.navigate(['edit-note', note.id ])
 
   }

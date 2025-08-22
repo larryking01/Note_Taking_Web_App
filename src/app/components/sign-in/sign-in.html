@@ -30,8 +30,10 @@
         </button>
 
         <div class="account-recovery">
-            <p (click)="navigateToSignUp()">New user? Register here</p>
-            <p>Forgot password? Reset now</p>
+            <a routerLink="/sign-up">
+                <p>New user? Register here</p>
+            </a>
+            <!-- <p>Forgot password? Reset now</p> -->
         </div>
     </form>
 </section>
