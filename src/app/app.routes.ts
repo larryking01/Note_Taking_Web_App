@@ -9,7 +9,7 @@ import { NoteDetails } from './components/note-details/note-details';
 import { SignIn } from './components/sign-in/sign-in';
 import { SignUp } from './components/sign-up/sign-up';
 import { LandingPage } from './components/landing-page/landing-page';
-
+import { ReadNote } from './components/read-note/read-note';
 
 
 export const routes: Routes = [
@@ -29,6 +29,12 @@ export const routes: Routes = [
         path: 'notes/:id',
         component: NoteDetails,
         title: 'Note Details',
+        canActivate: [ routeGuardGuard ]
+    },
+    {
+        path: 'read-note/:id',
+        component: ReadNote,
+        title: 'Read Note',
         canActivate: [ routeGuardGuard ]
     },
     {
