@@ -52,6 +52,11 @@ export class DisplayNotes implements OnInit {
   }
 
 
+  navigateToReadNote( note: NoteInterface ) {
+    this.router.navigate(['read-note', note.id])
+  }
+
+
   filterNotes(): void {
     const query = this.searchQuery.toLocaleLowerCase()
     this.filteredNotes = this.activeNotes.filter( note => 

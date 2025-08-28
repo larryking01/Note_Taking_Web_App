@@ -53,10 +53,17 @@
 
                             <article class="action-btns-article">
                                 <div class="action-btns">
+                                    <button (click)="navigateToReadNote(note)" class="edit-note-btn">
+                                        <div class="note-tag-icon">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                            <p class="button-text">Read</p>
+                                        </div>
+                                    </button>
+
                                     <button (click)="navigateToEditNote(note)" class="edit-note-btn">
                                         <div class="note-tag-icon">
                                             <i class="fa-solid fa-circle-info"></i>
-                                            <p class="button-text">View</p>
+                                            <p class="button-text">Edit</p>
                                         </div>
                                     </button>
                                 
