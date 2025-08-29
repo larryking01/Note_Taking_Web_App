@@ -47,14 +47,17 @@
   }
 
   .hero {
+    // background-color: green;
+    height: 80vh;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
-    padding: 4rem 0;
     gap: 3rem;
+    padding: 0 2rem;
 
     .hero-text {
+      // background-color: yellow;
       flex: 1;
       min-width: 280px;
       color: #1c1f26;
@@ -77,29 +80,30 @@
 
 
         button {
-        padding: 0.5rem 1.2rem;
-        font-size: 1rem;
-        background: none;
-        border: 1px solid #1c1f26;
-        color: #1c1f26;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.3s ease;
+          padding: 0.5rem 1.2rem;
+          font-size: 1rem;
+          background: none;
+          border: 1px solid #1c1f26;
+          color: #1c1f26;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
 
-        &:hover {
-          background-color: #1c1f26;
-          color: #fff;
-        }
+          &:hover {
+            background-color: #1c1f26;
+            color: #fff;
+          }
 
-        &.primary {
-          background-color: #1c1f26;
-          color: #fff;
-        }
+          &.primary {
+            background-color: #1c1f26;
+            color: #fff;
+          }
         }
       }
     }
 
     .hero-image {
+      // background-color: tomato;
       flex: 1;
       min-width: 280px;
 
@@ -112,3 +116,23 @@
   }
 }
 
+
+
+
+
+// responsive styling
+@media (max-width: 719px ) {
+
+  .landing-navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+
+  .hero {
+    margin-top: 4rem
+  }
+}
