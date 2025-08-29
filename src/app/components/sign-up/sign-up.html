@@ -18,8 +18,8 @@
             <label for="password-input">Password</label>
             <div>
                 <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
-                    <small *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required</small>
-                    <small *ngIf="signUpForm.get('password')?.errors?.['password']">Invalid email format</small>
+                    <small *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required.</small>
+                    <small *ngIf="signUpForm.get('password')?.errors?.['password']">Invalid email format.</small>
                 </div>
                 <input type="password" id="password-input" class="password-input" formControlName="password" aria-required="true">
             </div>
