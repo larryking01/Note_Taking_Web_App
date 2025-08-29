@@ -1,42 +1,42 @@
-<div class="layout">
+<article class="layout">
 
-<section class="sign-up-container">
-    <h3 class="auth-type-header">📝 Notopia | Sign in</h3>
-    <form [formGroup]="signInForm" (ngSubmit)="signInUser()" class="authentication-form">
-        
-        <label for="email-input">E-mail</label>
-        <div>
-            <div *ngIf="signInForm.get('email')?.invalid && signInForm.get('email')?.touched">
-                <small *ngIf="signInForm.get('email')?.errors?.['required']">E-mail is required</small>
-                <small *ngIf="signInForm.get('email')?.errors?.['email']">Invalid email format</small>
+    <section class="sign-up-container">
+        <h3 class="auth-type-header">📝 Notopia | Sign in</h3>
+        <form [formGroup]="signInForm" (ngSubmit)="signInUser()" class="authentication-form">
+            
+            <label for="email-input">E-mail</label>
+            <div>
+                <div *ngIf="signInForm.get('email')?.invalid && signInForm.get('email')?.touched">
+                    <small *ngIf="signInForm.get('email')?.errors?.['required']">E-mail is required</small>
+                    <small *ngIf="signInForm.get('email')?.errors?.['email']">Invalid email format</small>
+                </div>
+                <input type="email" id="email-input" class="email-input" formControlName="email" aria-required="true">
             </div>
-            <input type="email" id="email-input" class="email-input" formControlName="email" aria-required="true">
-        </div>
 
-        <label for="password-input">Password</label>
-        <div>
-            <div *ngIf="signInForm.get('password')?.invalid && signInForm.get('password')?.touched">
-                <small *ngIf="signInForm.get('password')?.errors?.['required']">Password is required</small>
-                <small *ngIf="signInForm.get('password')?.errors?.['password']">Invalid email format</small>
+            <label for="password-input">Password</label>
+            <div>
+                <div *ngIf="signInForm.get('password')?.invalid && signInForm.get('password')?.touched">
+                    <small *ngIf="signInForm.get('password')?.errors?.['required']">Password is required</small>
+                    <small *ngIf="signInForm.get('password')?.errors?.['password']">Invalid email format</small>
+                </div>
+                <input type="password" id="password-input" class="password-input" formControlName="password" aria-required="true">
             </div>
-            <input type="password" id="password-input" class="password-input" formControlName="password" aria-required="true">
-        </div>
 
-        <button type="submit" class="add-new-user-btn" aria-label="Sign in">
-            <div class="update-note-tag-icon">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                <p class="button-text">Sign in</p>
+            <button type="submit" class="add-new-user-btn" aria-label="Sign in">
+                <div class="update-note-tag-icon">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <p class="button-text">Sign in</p>
+                </div>
+            </button>
+
+            <div class="account-recovery">
+                <a routerLink="/sign-up">
+                    <p>New user? Register here</p>
+                </a>
+                <!-- <p>Forgot password? Reset now</p> -->
             </div>
-        </button>
+        </form>
+    </section>
 
-        <div class="account-recovery">
-            <a routerLink="/sign-up">
-                <p>New user? Register here</p>
-            </a>
-            <!-- <p>Forgot password? Reset now</p> -->
-        </div>
-    </form>
-</section>
-
-</div>
+</article>
 
