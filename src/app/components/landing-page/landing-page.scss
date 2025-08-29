@@ -4,8 +4,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #6e6e95;
-  color: #1c1f26;
+  background-color: var(--landing-page-bg) ;
+  color: var(--landing-page-col);
   padding: 1.5rem;
 
   .landing-navbar {
@@ -16,7 +16,7 @@
     .brand {
       font-size: 1.8rem;
       font-weight: bold;
-      color: #1c1f26;
+      color: var(--landing-page-col);
     }
 
     .auth-buttons {
@@ -27,20 +27,20 @@
         padding: 0.5rem 1.2rem;
         font-size: 1rem;
         background: none;
-        border: 1px solid #1c1f26;
-        color: #1c1f26;
+        border: 1px solid var(--landing-page-col);
+        color: var(--landing-page-col);
         border-radius: 6px;
         cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
-          background-color: #1c1f26;
-          color: #fff;
+          background-color: var(--landing-page-col);
+          color: var(--landing-page-white);
         }
 
         &.primary {
-          background-color: #1c1f26;
-          color: #fff;
+          background-color: var(--landing-page-col);
+          color: var(--landing-page-white);
         }
       }
     }
@@ -60,7 +60,7 @@
       // background-color: yellow;
       flex: 1;
       min-width: 280px;
-      color: #1c1f26;
+      color: var(--landing-page-col);
 
       h1 {
         font-size: clamp(2rem, 5vw, 3rem);
@@ -83,20 +83,20 @@
           padding: 0.5rem 1.2rem;
           font-size: 1rem;
           background: none;
-          border: 1px solid #1c1f26;
-          color: #1c1f26;
+          border: 1px solid var(--landing-page-col);
+          color: var(--landing-page-col);
           border-radius: 6px;
           cursor: pointer;
           transition: all 0.3s ease;
 
           &:hover {
-            background-color: #1c1f26;
-            color: #fff;
+            background-color: var(--landing-page-col);
+            color: var(--landing-page-white);
           }
 
           &.primary {
-            background-color: #1c1f26;
-            color: #fff;
+            background-color: var(--landing-page-col);
+            color: var(--landing-page-white);
           }
         }
       }
