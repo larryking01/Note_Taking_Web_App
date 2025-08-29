@@ -54,22 +54,22 @@
                             <article class="action-btns-article">
                                 <div class="action-btns">
                                     <button (click)="navigateToReadNote(note)" class="edit-note-btn">
-                                        <div class="note-tag-icon">
-                                            <i class="fa-solid fa-circle-info"></i>
+                                        <div class="action-tag-icon">
+                                            <!-- <i class="fa-solid fa-circle-info"></i> -->
                                             <p class="button-text">Read</p>
                                         </div>
                                     </button>
 
                                     <button (click)="navigateToEditNote(note)" class="edit-note-btn">
-                                        <div class="note-tag-icon">
-                                            <i class="fa-solid fa-circle-info"></i>
+                                        <div class="action-tag-icon">
+                                            <!-- <i class="fa-solid fa-circle-info"></i> -->
                                             <p class="button-text">Edit</p>
                                         </div>
                                     </button>
                                 
                                     <button (click)="archiveNote( note )" class="archive-btn" *ngIf="note.isArchived === false">
-                                        <div class="note-tag-icon">
-                                            <i class="fa-solid fa-lock"></i>
+                                        <div class="action-tag-icon">
+                                            <!-- <i class="fa-solid fa-lock"></i> -->
                                             <p class="button-text">Archive</p>
                                         </div>
                                     </button>

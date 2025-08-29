@@ -85,8 +85,18 @@
           font-style: italic;
         }
 
-
       }
+
+
+      .action-tag-icon {
+        display: flex;
+        justify-content: center;
+
+        .button-text {
+          font-size: 1.02rem;
+        }
+      }
+
 
       .note-title {
         margin: 1rem 0 0.8rem;
